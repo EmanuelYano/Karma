@@ -6,14 +6,14 @@
                     <v-card-title primary-title>
                         <h2 class="font-weight-regular font-italic"> Login </h2>
                     </v-card-title>
-                    <v-card-text class="font-weight-regular"> 
+                    <v-card-text class="font-weight-regular" color="yellow"> 
                         <v-text-field label="Digite seu email"></v-text-field>
                         <v-text-field label="Digite sua senha"></v-text-field>
-                        <v-btn color="green">Teste</v-btn>
+                        <v-btn color="green">Entrar</v-btn>
                         <!----<input v-model="email">
                         <input v-model="senha">
                         <v-btn color="blue">Entrar</v-btn> -->
-                        
+                       
                     </v-card-text>
                 </v-card>
             </v-flex>
