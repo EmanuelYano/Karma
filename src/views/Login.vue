@@ -8,10 +8,10 @@
                     </v-card-title>
                     <v-card-text class="font-weight-regular" color="yellow"> 
                         <v-text-field label="Digite seu email"></v-text-field>
-                        <v-text-field label="Digite sua senha"></v-text-field>
+                        <v-text-field label="Digite sua senha" type="password"></v-text-field>
                         <v-btn color="green">Entrar</v-btn>
                         <!----<input v-model="email">
-                        <input v-model="senha">
+                        <input v-model="senha"> 
                         <v-btn color="blue">Entrar</v-btn> -->
                        
                     </v-card-text>
