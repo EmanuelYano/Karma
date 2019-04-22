@@ -1,6 +1,6 @@
-<template>
+<template >
     <v-container grid-list-xl text-xs-left fill-height>
-        <v-layout align-center justify-center row fill-height>
+        <v-layout align-center justify-center row fill-height >
             <v-flex xs12 sm6 md4 lg4>
                 <v-card dark color="primary">
                     <v-card-title primary-title>
@@ -20,3 +20,8 @@
         </v-layout>
     </v-container>
 </template>
+<style>
+    .container{
+        background-image: url("../../img2/img1.jpg");    }
+   
+</style>
