@@ -2,7 +2,7 @@
     <div>
       <v-container>
         <v-form>
-           <v-layout align-center justify-center column class="elevation-2">
+           <v-layout align-center justify-center column class="elevation-2 cardzin">
              <v-flex xs12 sm6 md12>
                   <v-text-field
                     label="Nome"
@@ -55,3 +55,8 @@
       </v-layout>    
     </div>
 </template>
+<style>
+.cardzin{
+  background-color: rgba(200,150,214,.6);
+}
+</style>
