@@ -3,8 +3,7 @@
     
     <v-content>
         <Navbar />
-      <router-view/>
-      <v-btn to="/login">login</v-btn>   
+      <router-view/>   
     </v-content>
   
   </v-app>  

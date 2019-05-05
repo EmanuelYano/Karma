@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from './views/Login.vue'
 import Cadastro from './views/cadastro.vue'
+import Home from './views/Home.vue'
 
 Vue.use(Router)
 
@@ -18,6 +19,11 @@ export default new Router({
       path: '/Cadastro',
       name: 'Cadastro',
       component: Cadastro
+    },
+    {
+      path: '/Home',
+      name: 'Home',
+      component: Home
     }
   ]
 })

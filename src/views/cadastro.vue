@@ -35,10 +35,16 @@
 
                   <v-flex xs12 sm6 md12>
                       <v-text-field
+                  
                       v-model="password"
-                      
-                      name="input-10-1"
-                      label="Senha"
+            :append-icon="show1 ? 'visibility' : 'visibility_off'"
+            :rules="[rules.required, rules.min]"
+            :type="show1 ? 'text' : 'password'"
+            name="input-10-1"
+            label="Senha"
+            hint="Min. 8 caracteres"
+            counter
+            @click:append="show1 = !show1"
                       ></v-text-field>
                     </v-flex>
 
@@ -60,3 +66,18 @@
   background-color: rgba(200,150,214,.6);
 }
 </style>
+
+<script>
+    export default {
+      data () {
+        return {
+          show1: false,
+          password: '',
+          rules: {
+            required: value => !!value || 'Required.',
+            min: v => v.length >= 8 || 'Min 8 caracteres',
+          }
+        }
+      }
+    }
+  </script>
