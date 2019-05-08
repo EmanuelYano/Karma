@@ -1,5 +1,5 @@
 <template>
-    <div class="log">
+    <div class="teste">
         <v-container grid-list-xl text-xs-left fill-height >
             <v-layout align-center justify-center row fill-height >
                 <v-flex xs12 sm6 md4 lg6>
@@ -22,8 +22,9 @@
         </v-container>
     </div>
 </template>
-<style>
-    .log{
+<style scoped>
+    .teste{
+        height: 100%;
         background-image: url("../../img2/img1.jpg");    
     }
 </style>

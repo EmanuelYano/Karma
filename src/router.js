@@ -21,7 +21,7 @@ export default new Router({
       component: Cadastro
     },
     {
-      path: '/Home',
+      path: '/',
       name: 'Home',
       component: Home
     }
