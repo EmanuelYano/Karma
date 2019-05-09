@@ -73,8 +73,8 @@
         mostra: false,
         drawer: false,
         items: [
-          { title: 'Home', icon: 'home', route: '/' }
-          //{ title: 'Livros', icon: 'widgets', route: '/' }
+          { title: 'Home', icon: 'home', route: '/' },  
+          { title: 'Livros', icon: 'widgets', route: '/Livros' }
         ]
       }
     },

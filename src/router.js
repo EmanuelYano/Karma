@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Login from './views/Login.vue'
 import Cadastro from './views/cadastro.vue'
 import Home from './views/Home.vue'
+import Livros from './views/Livros.vue'
 
 Vue.use(Router)
 
@@ -24,6 +25,11 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/Livros',
+      name: 'Livros',
+      component: Livros
     }
   ]
 })
