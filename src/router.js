@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Login from './views/Login.vue'
-import Cadastro from './views/cadastro.vue'
+import Cadastro from './views/cadastroUser.vue'
 import Home from './views/Home.vue'
 import Livros from './views/Livros.vue'
+import cdtBook from './views/cadastroBook.vue'
 
 Vue.use(Router)
 
@@ -30,6 +31,11 @@ export default new Router({
       path: '/Livros',
       name: 'Livros',
       component: Livros
-    }
+    },
+    {
+      path: '/Book',
+      name: 'Cadastro de livros',
+      component: cdtBook
+    },
   ]
 })

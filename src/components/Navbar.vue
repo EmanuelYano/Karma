@@ -29,7 +29,7 @@
                 <v-btn to="/cadastro" class="sif"> Register </v-btn>
               </v-toolbar>
 
-            <v-navigation-drawer  app v-model="drawer" class="thor"  temporary>
+            <v-navigation-drawer  app v-model="drawer" class="thor"   temporary>
                 <v-list class="pt-2 mj" dense>
                     <v-toolbar-title class="grey--text text-uppercase " >
                       <v-toolbar-side-icon @click.stop="drawer = !drawer" class="grey--text text-uppercase"></v-toolbar-side-icon>                              
@@ -74,7 +74,8 @@
         drawer: false,
         items: [
           { title: 'Home', icon: 'home', route: '/' },  
-          { title: 'Livros', icon: 'widgets', route: '/Livros' }
+          { title: 'Livros', icon: 'book', route: '/Livros' },
+          { title: 'Cadastro de livros', icon: 'stop', route: '/Book' }
         ]
       }
     },
