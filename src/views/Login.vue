@@ -3,6 +3,12 @@
         <v-container grid-list-xl text-xs-left fill-height >
             <v-layout align-center justify-center row fill-height >
                 <v-flex xs12 sm7 md6 lg5>
+                     <v-alert
+                        :value="false"
+                        :type="cor"
+                        >
+                        {{mensagem}}
+                    </v-alert>
                     <v-card color="vision ml-2 mr-2">
                         <v-layout justify-center="">
                             <v-card-title primary-title>
@@ -27,20 +33,28 @@
     </div>
 </template>
 <script>
+import LoginService from '../service/LoginService.js'
 export default {
     data(){
         return{
             email:"",
-            pass: ""
+            pass: "",
+            value: false,
+            mensagem: "",
+            cor: ""
         }
     },
     methods:{
         tyr(){
-            if(this.email == "" || this.pass == ""){
-                alert("Digite um email ou senha válidos")
+            let x = LoginService.logar(this.email,this.senha)
+            if(x == true){
+                this.cor = 'success'
+                this.mensagem = 'Login realizado com sucesso'
+                this.alert = true
             }else{
-                alert("Email ", this.email)
-                alert("Senha ",this.pass)
+                this.cor = 'error'
+                this.mensagem = 'Erro ao realizar login'
+                this.alert = true
             }
         }
     }

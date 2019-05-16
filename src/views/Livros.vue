@@ -8,13 +8,13 @@
 
         <input v-model="x" >
 
-        <v-card style="width:15%;">
+        <!--v-card style="width:15%;">
             <v-card-title>
                 <h5> Programando C++ </h5> 
             </v-card-title>
             <v-card-text>
                 <p>
-                    ------> imagem ------>
+                    ------ imagem ------
                 </p>
                 <p>
                     Sinopse do livro
@@ -23,7 +23,7 @@
                    Disponivel ou Não 
                 </p>
             </v-card-text>
-        </v-card>
+        </v-card--->
 
     </div>
 </template>

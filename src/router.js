@@ -4,7 +4,7 @@ import Login from './views/Login.vue'
 import Cadastro from './views/cadastroUser.vue'
 import Home from './views/Home.vue'
 import Livros from './views/Livros.vue'
-import cdtBook from './views/cadastroBook.vue'
+import cadBook from './views/cadastroBook.vue'
 
 Vue.use(Router)
 
@@ -35,7 +35,7 @@ export default new Router({
     {
       path: '/Book',
       name: 'Cadastro de livros',
-      component: cdtBook
+      component: cadBook
     },
   ]
 })
