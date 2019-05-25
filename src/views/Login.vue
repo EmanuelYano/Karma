@@ -62,6 +62,9 @@ export default {
 </script>
 
 <style scoped>
+    >>>.v-label--active{
+         transform: translateY(-12px) scale(0.72) !important;
+    }
     .teste{
         height: 100%;
         background-image: url("../../img2/img22.jpg"); 
@@ -69,7 +72,7 @@ export default {
         background-repeat: no-repeat;   
     }
     .vision{
-        background-color: rgb(222,184,135,.9);
+        background-color: rgba(222,184,135,.9);
         border-radius: 10px 10px;
         border: .3px solid black;
         
