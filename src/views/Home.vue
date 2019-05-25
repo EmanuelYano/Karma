@@ -1,9 +1,7 @@
 <template>
     <div class="home">
         <v-carousel
-            delimiter-icon="stop"
-            prev-icon="mdi-arrow-left"
-            next-icon="mdi-arrow-right"
+           
         >
             <v-carousel-item
             v-for="(item,i) in items"
@@ -14,6 +12,13 @@
     
     </div>
 </template>
+<style>
+  .v-carousel__controls{
+    background-color:rgba(0,0,0,.3);
+    height: 8%;
+  }
+</style>
+
 <script>
 //1440-500 fotos
   export default {
