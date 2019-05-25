@@ -24,7 +24,6 @@
                 </p>
             </v-card-text>
         </v-card--->
-
     </div>
 </template>
 <script>
@@ -36,8 +35,7 @@
       },
       methods:{
           login(){
-              if (this.x == "World!")
-              console.log(this.x)
+              
           }
       }  
     }

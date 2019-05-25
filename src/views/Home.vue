@@ -1,7 +1,5 @@
 <template>
     <div class="home">
-    
-        <v-btn>home</v-btn>
         <v-carousel
             delimiter-icon="stop"
             prev-icon="mdi-arrow-left"
@@ -17,6 +15,7 @@
     </div>
 </template>
 <script>
+//1440-500 fotos
   export default {
     data () {
       return {
