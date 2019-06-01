@@ -9,4 +9,11 @@ export default class LoginService{
     static recSenha(email){
 
     }
+    
+    
+    
+    //sessao de cadastro
+    static comPass(pw1,pw2){
+        
+    }
 }

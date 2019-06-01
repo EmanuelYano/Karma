@@ -53,7 +53,7 @@ export default {
                 this.alert = true
             }else{
                 this.cor = 'error'
-                this.mensagem = 'Erro ao realizar login'
+                this.mensagem = 'Erro ao realizar login. Email ou senha inválidos!'
                 this.alert = true
             }
         }

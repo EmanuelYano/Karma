@@ -2,7 +2,7 @@
     <div class="cardzin">
       <v-container fill-height>
           <v-layout align-center justify-center  >
-              <v-flex xs12 sm7 md6 lg5>
+              <v-flex xs12 sm7 md7 lg7>
                 <v-card color="sif" >
                   <v-layout justify-center>
                     <v-card-title primary-title>
@@ -10,14 +10,20 @@
                     </v-card-title>
                   </v-layout>
                   <v-card-text>
-                      <v-text-field color="black" outline label="Nome" autofocus></v-text-field>
-                      <v-text-field color="black" outline label="Código do Aluno" type="number"></v-text-field>
-                      <v-text-field color="black" outline label="E-mail" type="email" v-model="em1"></v-text-field>
-                      <v-text-field color="black" outline label="Confirmar e-mail" type="email" v-model="em2"></v-text-field>
-                      <v-text-field color="black" outline label="Número de Telefone" type="number"></v-text-field>
-                      <v-text-field color="black" outline label="Série"></v-text-field>
-                      <v-text-field color="black" outline label="Senha" type="password" v-model="pw1"></v-text-field>
-                      <v-text-field color="black" outline label="Confirmar senha" type="password" v-model="pw2"></v-text-field>  
+                    <v-layout>
+                      <v-flex sm7 md7 lg7>
+                        <v-text-field color="black" outline label="Nome" autofocus></v-text-field>
+                        <v-text-field color="black" outline label="Código do Aluno" type="number"></v-text-field>
+                        <v-text-field color="black" outline label="E-mail" type="email" v-model="em1"></v-text-field>
+                        <v-text-field color="black" outline label="Confirmar e-mail" type="email" v-model="em2"></v-text-field>
+                      </v-flex>
+                      <v-flex sm7 md7 lg7 ml-2>
+                        <v-text-field color="black" outline label="Número de Telefone" type="number"></v-text-field>
+                        <v-text-field color="black" outline label="Série"></v-text-field>
+                        <v-text-field color="black" outline label="Senha" type="password" v-model="pw1"></v-text-field>
+                        <v-text-field color="black" outline label="Confirmar senha" type="password" v-model="pw2"></v-text-field>  
+                      </v-flex>
+                    </v-layout>
                     <v-btn block color="rgba(211,160,95,.9)" @click="comPass">confirmar</v-btn>
                   </v-card-text>  
                 </v-card>
@@ -27,6 +33,9 @@
     </div>
 </template>
 <style>
+    >>>.v-label--active{
+            transform: translateY(-12px) scale(0.72) !important;
+        }
     .cardzin{
       height: 100%;
       background-image: url('../../img2/img1_1.png');

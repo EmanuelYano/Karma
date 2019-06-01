@@ -8,6 +8,7 @@ Vue.use(Vuetify, {
     Primary: '#9652ff',
     info: '#ffaa2c',
     thor: '#FFDEAD',
-    sif: '#DEB887'
+    sif: '#DEB887',
+    hela: 
   }
 })

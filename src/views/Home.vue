@@ -26,7 +26,7 @@
       return {
         items: [
           {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg'
+            src: '../../img2/img9_1.jpg'
           },
           {
             src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
