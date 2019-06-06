@@ -1,7 +1,25 @@
 <template>
   <v-app>
-        <v-content>
-      <router-view/>
+    
+    <v-content>
+        <Navbar />
+      <router-view/>   
     </v-content>
-  </v-app>
+  
+  </v-app>  
 </template>
+
+<script>
+  import Navbar from '@/components/Navbar'
+
+  export default{
+    name: 'App',
+    components: { Navbar },
+    data (){
+      return{
+        //
+      }
+    }
+  }
+
+</script>

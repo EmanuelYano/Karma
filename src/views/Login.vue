@@ -1,22 +1,83 @@
 <template>
-    <v-container grid-list-xl text-xs-left fill-height>
-        <v-layout align-center justify-center row fill-height>
-            <v-flex xs12 sm6 md4 lg4>
-                <v-card dark color="primary">
-                    <v-card-title primary-title>
-                        <h2 class="font-weight-regular font-italic"> Login </h2>
-                    </v-card-title>
-                    <v-card-text class="font-weight-regular" color="yellow"> 
-                        <v-text-field label="Digite seu email"></v-text-field>
-                        <v-text-field label="Digite sua senha" type="password"></v-text-field>
-                        <v-btn color="green">Entrar</v-btn>
-                        <!----<input v-model="email">
-                        <input v-model="senha"> 
-                        <v-btn color="blue">Entrar</v-btn> -->
-                       
-                    </v-card-text>
-                </v-card>
-            </v-flex>
-        </v-layout>
-    </v-container>
+    <div class="teste">
+        <v-container grid-list-xl text-xs-left fill-height >
+            <v-layout align-center justify-center row fill-height >
+                <v-flex xs12 sm7 md6 lg5>
+                     <v-alert
+                        v-model="alert"
+                        :type="cor"
+                        dismissible>
+                        {{mensagem}}
+                    </v-alert>
+                    <v-card color="vision ml-2 mr-2">
+                        <v-layout justify-center="">
+                            <v-card-title primary-title>
+                                <h1 class="font-weight-light text-uppercase"> Login </h1>
+                            </v-card-title>
+                        </v-layout>
+                        <v-card-text class="font-weight-regular" > 
+                            <v-text-field color="black" outline label="Digite seu email" v-model="email" autofocus></v-text-field>
+                            <v-text-field color="black" outline label="Digite sua senha" type="password" v-model="pass"></v-text-field>
+                            <v-btn color="rgba(211,160,95,.9)" align-center justify-center @click="tyr" block> Entrar</v-btn>                   
+                        </v-card-text>
+                        <v-layout justify-center>
+                            <v-card-actions>
+                                <v-btn flat small to="/cadastro" class="odin">Cadastra-se</v-btn>
+                                <v-btn flat small class="odin" >Esqueceu a senha?</v-btn>
+                            </v-card-actions>
+                        </v-layout>
+                    </v-card>
+                </v-flex>
+            </v-layout>
+        </v-container>
+    </div>
 </template>
+<script>
+import LoginService from '../service/LoginService.js'
+export default {
+    data(){
+        return{
+            email:"",
+            pass: "",
+            alert: false,
+            mensagem: "",
+            cor: ""
+        }
+    },
+    methods:{
+        tyr(){
+            let x = LoginService.logar(this.email,this.pass)
+            if(x == true){
+                this.cor = 'success'
+                this.mensagem = 'Login realizado com sucesso'
+                this.alert = true
+            }else{
+                this.cor = 'error'
+                this.mensagem = 'Erro ao realizar login. Email ou senha inválidos!'
+                this.alert = true
+            }
+        }
+    }
+}
+</script>
+
+<style scoped>
+    >>>.v-label--active{
+         transform: translateY(-12px) scale(0.72) !important;
+    }
+    .teste{
+        height: 100%;
+        background-image: url("../../img2/img22.jpg"); 
+        background-size: 100% 100%;
+        background-repeat: no-repeat;   
+    }
+    .vision{
+        background-color: rgba(222,184,135,.9);
+        border-radius: 10px 10px;
+        border: .3px solid black;
+        
+    }
+    .odin{
+        margin-bottom:6%;
+    }
+</style>

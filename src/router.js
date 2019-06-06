@@ -5,6 +5,11 @@ import Cadastro from './views/cadastro.vue'
 import T from './views/tarefamarc.vue'
 import cremedemilho from './views/cremedemilho.vue'
 import cremedealho from './views/cremedealho.vue'
+import Cadastro from './views/cadastroUser.vue'
+import Home from './views/Home.vue'
+import Livros from './views/Livros.vue'
+import cadBook from './views/cadastroBook.vue'
+
 Vue.use(Router)
 
 export default new Router({
@@ -36,5 +41,19 @@ export default new Router({
       name: 'cremedealho',
       component: cremedealho
     }
+      path: '/',
+      name: 'Home',
+      component: Home
+    },
+    {
+      path: '/Livros',
+      name: 'Livros',
+      component: Livros
+    },
+    {
+      path: '/Book',
+      name: 'Cadastro de livros',
+      component: cadBook
+    },
   ]
 })
