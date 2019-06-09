@@ -73,9 +73,7 @@ export default {
     }
     .vision{
         background-color: rgba(222,184,135,.9);
-        border-radius: 10px 10px;
-        border: .3px solid black;
-        
+       
     }
     .odin{
         margin-bottom:6%;
