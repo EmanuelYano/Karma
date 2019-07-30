@@ -12,7 +12,7 @@
                   <v-card-text>
                     <v-layout>
                       <v-flex sm9 md7 lg7>
-                        <v-text-field color="black" outline label="Nome" autofocus></v-text-field>
+                        <v-text-field color="black" outline label="Nome" autofocus required></v-text-field>
                         <v-text-field color="black" outline label="Código do Aluno" type="number"></v-text-field>
                         <v-text-field color="black" outline label="E-mail" type="email" v-model="em1"></v-text-field>
                         <v-text-field color="black" outline label="Senha" type="password" v-model="pw1"></v-text-field>

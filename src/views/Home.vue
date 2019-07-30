@@ -26,17 +26,17 @@
       return {
         items: [
           {
-            src: '../../img2/img9_1.jpg'
+            src: require('../assets/img2/img9_1.jpg')
+          }/*,
+          {
+            //src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
           },
           {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
+           // src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'
           },
           {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'
-          },
-          {
-            src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
-          }
+            //src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
+          }*/
         ]
       }
     }
