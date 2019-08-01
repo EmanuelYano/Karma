@@ -2,7 +2,7 @@
     <div class="cardzin">
       <v-container fill-height>
           <v-layout align-center justify-center  >
-              <v-flex xs12 sm9 md7 lg7>
+              <v-flex xs12 sm9 md8   lg7>
                 <v-card color="rgba(222,184,135,.9)" class="vision" >
                   <v-layout justify-center>
                     <v-card-title primary-title>
@@ -10,20 +10,29 @@
                     </v-card-title>
                   </v-layout>
                   <v-card-text>
+<<<<<<< HEAD
                     <v-layout>
                       <v-flex sm9 md7 lg7>
                         <v-text-field color="black" outline label="Nome" autofocus required></v-text-field>
+=======
+                    <v-container grid-list-xs>
+                    <v-layout row wrap>
+                      <v-flex xs12 sm6>
+                        <v-text-field color="black" outline label="Nome" autofocus></v-text-field>
+                
+>>>>>>> 97dacc6f4d361ec4880bec6caa44cd697af8203b
                         <v-text-field color="black" outline label="Código do Aluno" type="number"></v-text-field>
                         <v-text-field color="black" outline label="E-mail" type="email" v-model="em1"></v-text-field>
                         <v-text-field color="black" outline label="Senha" type="password" v-model="pw1"></v-text-field>
                       </v-flex>
-                      <v-flex sm9 md7 lg7 ml-2>
+                      <v-flex xs12 sm6>
                         <v-text-field color="black" outline label="Número de Telefone" type="number"></v-text-field>
                         <v-text-field color="black" outline label="Série"></v-text-field>
                         <v-text-field color="black" outline label="Confirmar e-mail" type="email" v-model="em2"></v-text-field>
                         <v-text-field color="black" outline label="Confirmar senha" type="password" v-model="pw2"></v-text-field>  
                       </v-flex>
                     </v-layout>
+                    </v-container>
                     <v-btn block color="rgba(211,160,95,.9)" @click="comPass">confirmar</v-btn>
                   </v-card-text>  
                 </v-card>

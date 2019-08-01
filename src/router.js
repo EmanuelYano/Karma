@@ -1,10 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Login from './views/Login.vue'
+<<<<<<< HEAD
+=======
+import Cadastro from './views/cadastroUser.vue'
+>>>>>>> 97dacc6f4d361ec4880bec6caa44cd697af8203b
 import T from './views/tarefamarc.vue'
 import cremedemilho from './views/cremedemilho.vue'
 import cremedealho from './views/cremedealho.vue'
-import Cadastro from './views/cadastroUser.vue'
 import Home from './views/Home.vue'
 import Livros from './views/Livros.vue'
 import cadBook from './views/cadastroBook.vue'
