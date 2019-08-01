@@ -67,7 +67,7 @@ export default {
     }
     .teste{
         height: 100%;
-        background-image: url("../../img2/img22.jpg"); 
+        background-image: url("../assets/img2/img22.jpg"); 
         background-size: 100% 100%;
         background-repeat: no-repeat;   
     }

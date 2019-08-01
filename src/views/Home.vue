@@ -27,10 +27,10 @@
         items: [
           {
             src: require('../assets/img2/img9_1.jpg')
-          }/*,
-          {
-            //src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
           },
+          {
+            src: require('../assets/img2/img21_1.jpg')
+          }/*,
           {
            // src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'
           },
