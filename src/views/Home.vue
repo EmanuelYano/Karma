@@ -26,11 +26,7 @@
       return {
         items: [
           {
-<<<<<<< HEAD
             src: require('../assets/img2/img9_1.jpg')
-=======
-            src: require('@/assets/img2/img9_1.jpg')
->>>>>>> 97dacc6f4d361ec4880bec6caa44cd697af8203b
           },
           {
             src: require('../assets/img2/img21_1.jpg')

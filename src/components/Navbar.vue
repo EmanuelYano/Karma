@@ -91,7 +91,8 @@
         items: [
           { title: 'Home', icon: 'home', route: '/' },  
           { title: 'Livros', icon: 'local_library', route: '/Livros' },
-          { title: 'Cadastro de livros', icon: 'stop', route: '/Book' }
+          { title: 'Cadastro de livros', icon: 'stop', route: '/Book' },
+          { title: 'Agua', icon:'pool', route:'/agua'}
         ]
       }
     },
