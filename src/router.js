@@ -57,7 +57,7 @@ export default new Router({
       component: cadBook
     },
     {
-      path: 'aguas',
+      path: '/agua',
       name: 'AGUA',
       component: Agua
     }
