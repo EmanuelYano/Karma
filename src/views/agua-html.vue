@@ -4,13 +4,13 @@
   <v-container>
     <v-card color="#f8f8ff">
       <v-layout align-top justify-center row fill-height>
-        <v-flex lg10 mt-5>
+        <v-flex md11 lg10 mt-5>
           <h1>A poluição de rios evidencia um grande problema: A falta de educação ambiental</h1>
           <hr size=2 width=90% align: rigth noshade color="black">
         </v-flex>
       </v-layout>
       <v-layout align-center justify-center row fill-height>
-        <v-flex lg8 ml-5 mt-3> 
+        <v-flex md11 lg8 ml-5 mt-3> 
           <v-img
             :src= "src"
             aspect-ratio="1"
@@ -22,7 +22,7 @@
         </v-flex>
       </v-layout>
       <v-layout align-center justify-center row fill-height>
-        <v-flex lg8 mt-4>
+        <v-flex md10 lg8 mt-4>
           <div class="txt">
             <p>&nbsp;&nbsp;&nbsp;&nbsp;O planeta Terra possui cerca de 71% da sua superfície tomada por água, contudo apenas cerca de 2,7% é potável, sendo a maior parte congelada em calotas polares ou geleiras.
               Com isso, estamos enfrentando um era na qual ela está se tornando muito valiosa, pois os rios e lagos, ou estão secando ou se tornando tão poluídos que não se consegue tratar a água para a redistribuição às pessoas. 
@@ -54,7 +54,7 @@
           </v-flex>
       </v-layout>
       <v-layout align-center justify-center row fill-height>
-        <v-flex lg8 ml-5 mt-3> 
+        <v-flex md11 lg8 ml-5 mt-3> 
           <v-img
             :src= "src1"
             aspect-ratio="1"
@@ -66,7 +66,7 @@
         </v-flex>
       </v-layout>
       <v-layout align-center justify-center row fill-height>
-        <v-flex lg8 mt-4>
+        <v-flex md10 lg8 mt-4>
           <div class="txt">
             <p>
               &nbsp;&nbsp;&nbsp;&nbsp;Uma das principais fontes poluidoras é o esgoto de residencias, industrias e hospitais não tratados, pois além de consumirem oxigenio na sua decomposição, causando a morte de peixes, liberam mal cheiro e micro-organismos patogênicos. 
@@ -78,7 +78,7 @@
         </v-flex>
       </v-layout>
       <v-layout align-center justify-center row fill-height>
-        <v-flex lg8 ml-5 mt-3> 
+        <v-flex md11 lg8 ml-5 mt-3> 
           <v-img
             :src= "src2"
             aspect-ratio="1"
@@ -90,7 +90,7 @@
         </v-flex>
       </v-layout>
       <v-layout align-center justify-center row fill-height>
-        <v-flex lg8 mt-4>
+        <v-flex md10 lg8 mt-4>
           <div class="txt">
             <p>
               &nbsp;&nbsp;&nbsp;&nbsp;Segundo a Lei nº9.795/1999, a educação ambienta é algo essencial e de suma importancia para o equilíbrio da sustentabilidade e desenvolvimento do nosso país. 
@@ -114,7 +114,7 @@
         </v-flex>
       </v-layout>
     <v-layout align-center justify-center row fill-height>
-        <v-flex lg8 ml-5 mt-3> 
+        <v-flex md11 lg8 ml-5 mt-3> 
           <v-img
             :src= "src3"
             aspect-ratio="1"
@@ -126,7 +126,7 @@
         </v-flex>
       </v-layout>
       <v-layout align-center justify-center row fill-height>
-        <v-flex lg8 mt-4 mb-4>
+        <v-flex md10 lg8 mt-4 mb-4>
           <div class="txt">
             <p>
               &nbsp;&nbsp;&nbsp;&nbsp;Contudo, ao sair e analisar a realidade não consiste em 10% do que se manda na lei, geralmente devido a falta de informação ou de estrutura para realização de oficinas ou aulas que possam levar essa ideia de conscientização ambiental, e aplicando mudanças práticas para melhorar o entendimento desde pequenos.
@@ -139,10 +139,10 @@
         </v-flex>
       </v-layout>
       <v-layout align-center justify-center row>
-        <v-flex lg8 mt-4>
+        <v-flex md10 lg8 mt-4>
           <div >
-            <p style="font-family: courier; font-size: 12px; color: rgba(128,128,128,.8); line-height:5%">Escrito por: Emanuel Yano</p>
-            <p style="font-family: courier; font-size: 12px; color: rgba(128,128,128,.8)">Dia 05 ago. 2019</p>
+            <p style="font-family: courier; font-weight:bold; font-size: 12px; color: rgba(0,0,0,.8); line-height:2px">Escrito por: Emanuel Yano</p>
+            <p style="font-family: courier; font-size: 12px; color: rgba(128,128,128,.9 ); line-height:2px">Dia 05 ago. 2019</p>
           </div>  
         </v-flex>
       </v-layout>
@@ -189,7 +189,19 @@ export default {
    text-align: justify;
    color: rgba(0,0,0,.8)
   }
-  /*.table{}*/
+  .table{
+    border: black 2px solid;
+  }
+  .table th{
+    border: gray 1px solid;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .table td{
+    border: gray 1px solid;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;  
+  }
   legend{
     text-align: center;    
     margin-top:3px;
