@@ -6,7 +6,7 @@
       <v-layout align-top justify-center row fill-height>
         <v-flex md11 lg10 mt-5>
           <h1>A poluição de rios evidencia um grande problema: A falta de educação ambiental</h1>
-          <hr size=2 width=90% align: rigth noshade color="black">
+          <hr size=2 width=90% align: center noshade color="black">
         </v-flex>
       </v-layout>
       <v-layout align-center justify-center row fill-height>
@@ -14,7 +14,7 @@
           <v-img
             :src= "src"
             aspect-ratio="1"
-            class="grey lighten-"
+            class="grey lighten"
             max-width="700"
             max-height="400"
           ></v-img>
