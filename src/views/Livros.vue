@@ -4,15 +4,19 @@
             <div>
                 <v-layout align-left row fill-height >
                     <v-flex md6 lg4>
-                        <v-img 
-                            v-for="(item, i) in items" 
-                            :key="i" 
-                            :src="item.src" 
-                            aspect-ratio="1" 
-                            class="grey lighten" 
-                            max-width="200  " 
-                            max-height="500">
-                        </v-img>
+                        <div class="view-book">
+                            
+                                <v-img 
+                                    v-for="(item, i) in items" 
+                                    :key="i" 
+                                    :src="item.src" 
+                                    aspect-ratio="1" 
+                                    class="grey lighten" 
+                                    max-width="200  " 
+                                    max-height="500">
+                                </v-img>
+                            
+                        </div>
                     </v-flex>
                 </v-layout>
             </div>
@@ -50,3 +54,10 @@
 
     }
 </script>
+<style>
+    .view-book{
+        border: black 2px solid;
+        padding: 3px;
+    }
+
+</style>
