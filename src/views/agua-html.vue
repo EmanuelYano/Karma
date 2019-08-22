@@ -18,7 +18,7 @@
             max-width="700"
             max-height="400"
           ></v-img>
-          <legend style="margin-left:17%" >Imagem 1: Rio poluído com lixos sólidos (garrafas pets principalmente). <br/> Fonte: https://www.todoestudo.com.br/geografia/rios-poluidos</legend>
+          <legend>Imagem 1: Rio poluído com lixos sólidos (garrafas pets principalmente). <br/> Fonte: https://www.todoestudo.com.br/geografia/rios-poluidos</legend>
         </v-flex>
       </v-layout>
       <v-layout align-center justify-center row fill-height>
@@ -62,7 +62,7 @@
             max-width="700"
             max-height="400"
           ></v-img>
-          <legend style="margin-left:0.5%">Imagem 2: Moratantade dos peixes no rio sino.  <br/> Fonte: https://www.jornalnh.com.br/_conteudo/2017/10/noticias/regiao/2182459-entre-os-dez-mais-poluidos<br/>-do-pais-sinos-cai-e-gravatai-ainda-tem-esgoto-como-vilao.html</legend>
+          <legend>Imagem 2: Moratantade dos peixes no rio sino.  <br/> Fonte: https://www.jornalnh.com.br/_conteudo/2017/10/noticias/regiao/2182459-entre-os-dez-mais-poluidos<br/>-do-pais-sinos-cai-e-gravatai-ainda-tem-esgoto-como-vilao.html</legend>
         </v-flex>
       </v-layout>
       <v-layout align-center justify-center row fill-height>
@@ -86,7 +86,7 @@
             max-width="700"
             max-height="500"
           ></v-img>
-          <legend style="margin-left:10%">Imagem 3: Dia mundial da água.  <br/> Fonte:https://www.osantarritense.com.br/2015/03/dia-da-agua-sera-comemorado-com.html</legend>
+          <legend s>Imagem 3: Dia mundial da água.  <br/> Fonte:https://www.osantarritense.com.br/2015/03/dia-da-agua-sera-comemorado-com.html</legend>
         </v-flex>
       </v-layout>
       <v-layout align-center justify-center row fill-height>
@@ -122,7 +122,7 @@
             max-width="700"
             max-height="500"
           ></v-img>
-          <legend style="margin-left:3%">Imagem 3: Opinião online da populaçao.  <br/> Fonte:https://www.researchgate.net/figure/Figura-1-Resultado-da-pesquisa-on-line-sobre-o-PLS-221-2015<br/>-em-abril-de-2016_fig1_331985275</legend>
+          <legend >Imagem 3: Opinião online da populaçao.  <br/> Fonte:https://www.researchgate.net/figure/Figura-1-Resultado-da-pesquisa-on-line-sobre-o-PLS-221-2015<br/>-em-abril-de-2016_fig1_331985275</legend>
         </v-flex>
       </v-layout>
       <v-layout align-center justify-center row fill-height>
@@ -203,7 +203,7 @@ export default {
     font-family: Arial, Helvetica, sans-serif;  
   }
   legend{
-    text-align: center;    
+    text-align: left;    
     margin-top:3px;
     color:#9f9c99;
     line-height: 135%;
