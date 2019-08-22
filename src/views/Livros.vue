@@ -1,13 +1,26 @@
 <template>
     <div>
-        <h1>
-            Hello {{x}}
-        </h1>
-        <br />
-        <v-btn @click="login"> livros</v-btn>
-
-        <input v-model="x" >
-
+        <v-container>
+            <div>
+                <v-layout align-left row fill-height >
+                    <v-flex md6 lg4>
+                        <div class="view-book">
+                            
+                                <v-img 
+                                    v-for="(item, i) in items" 
+                                    :key="i" 
+                                    :src="item.src" 
+                                    aspect-ratio="1" 
+                                    class="grey lighten" 
+                                    max-width="200  " 
+                                    max-height="500">
+                                </v-img>
+                            
+                        </div>
+                    </v-flex>
+                </v-layout>
+            </div>
+       </v-container>
         <!--v-card style="width:15%;">
             <v-card-title>
                 <h5> Programando C++ </h5> 
@@ -30,13 +43,21 @@
     export default {
       data(){
           return{
-              x:"World!"
+              items:[
+                  {src: require("../assets/img1/livro_1.jpg")}
+              ]
           }
       },
       methods:{
-          login(){
-              
-          }
-      }  
+
+      } 
+
     }
 </script>
+<style>
+    .view-book{
+        border: black 2px solid;
+        padding: 3px;
+    }
+
+</style>
