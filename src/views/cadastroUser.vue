@@ -1,8 +1,8 @@
-<template>
+ <template>
     <div class="cardzin">
       <v-container fill-height>
           <v-layout align-center justify-center  >
-              <v-flex xs12 sm9 md8   lg7>
+              <v-flex xs12 sm9 md8 lg7>
                 <v-card color="rgba(222,184,135,.9)" class="vision" >
                   <v-layout justify-center>
                     <v-card-title primary-title>

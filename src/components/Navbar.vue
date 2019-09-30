@@ -4,12 +4,11 @@
           <v-toolbar  color="thor" app>
                 <v-toolbar-side-icon @click.stop="drawer = !drawer" class=""></v-toolbar-side-icon>
             
-                <v-toolbar-title class="text-uppercase " >
+                <v-toolbar-title class="text-uppercase">
                   <span class="font-weight-thin ">Biblio</span>
                   <span class="font-weight-regular ">tec</span>
                   <span class="ml-2 font-weight-bold">wbs</span> 
-                </v-toolbar-title>
-               
+                </v-toolbar-title>               
                   <v-spacer></v-spacer> 
                   <div class="loki">
                     <v-text-field label="Pesquisar" class="ml-5 mt-3" color="black" v-if="mostra"> </v-text-field>
@@ -80,6 +79,9 @@
     }
     .loki{
       width: 20%;
+    }
+    span{
+      font-size:22px;
     }
 </style>
 <script>
