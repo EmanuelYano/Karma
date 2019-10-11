@@ -1,33 +1,40 @@
  <template>
     <div class="cardzin">
+      <h1 v-for="usu in usuarios" :key="usu._id" > {{usu.nome}} </h1>
       <v-container fill-height>
           <v-layout align-center justify-center  >
               <v-flex xs12 sm9 md8 lg7>
-                <v-card color="rgba(222,184,135,.9)" class="vision" >
+                 <v-alert v-model="alert" :color="cor" dismissible>
+                        {{message}}
+                    </v-alert>
+                  <v-card color="rgba(222,184,135,.9)" class="vision" >
                   <v-layout justify-center>
+                   
                     <v-card-title primary-title>
                       <h1 class="font-weight-light text-uppercase">Cadastre-se</h1>
                     </v-card-title>
                   </v-layout>
                   <v-card-text>
+                    
                     <v-container grid-list-xs>
                     <v-layout row wrap>
                       <v-flex xs12 sm6>
-                        <v-text-field color="black" outline label="Nome" autofocus></v-text-field>
+                        <v-text-field color="black" outline label="Nome" autofocus v-model="usuario.nome"></v-text-field>
                 
-                        <v-text-field color="black" outline label="Código do Aluno" type="number"></v-text-field>
-                        <v-text-field color="black" outline label="E-mail" type="email" v-model="em1"></v-text-field>
-                        <v-text-field color="black" outline label="Senha" type="password" v-model="pw1"></v-text-field>
+                        <v-text-field color="black" outline label="Código do Aluno"  v-model="usuario.codigo"></v-text-field>
+                        <v-text-field color="black" outline label="E-mail"  v-model="usuario.email"></v-text-field>
+                        <v-text-field color="black" outline label="Senha"  v-model="usuario.senha"></v-text-field>
                       </v-flex>
                       <v-flex xs12 sm6>
-                        <v-text-field color="black" outline label="Número de Telefone" type="number"></v-text-field>
-                        <v-text-field color="black" outline label="Série"></v-text-field>
-                        <v-text-field color="black" outline label="Confirmar e-mail" type="email" v-model="em2"></v-text-field>
-                        <v-text-field color="black" outline label="Confirmar senha" type="password" v-model="pw2"></v-text-field>  
+                        <v-text-field color="black" outline label="Número de Telefone"  v-model="usuario.telefone"></v-text-field>
+                        <!--v-text-field color="black" outline label="Série"></v-text-field-->
+                         <v-select :items="items" label="Selecione a série"  color="black" outlined v-model="usuario.serie"></v-select>
+                        <v-text-field color="black" outline label="Confirmar e-mail"  v-model="email"></v-text-field>
+                        <v-text-field color="black" outline label="Confirmar senha"  v-model="senha"></v-text-field>  
                       </v-flex>
                     </v-layout>
                     </v-container>
-                    <v-btn block color="rgba(211,160,95,.9)" @click="comPass">confirmar</v-btn>
+                    <v-btn block color="rgba(211,160,95,.9)" @click="salvar">confirmar</v-btn>
                   </v-card-text>  
                 </v-card>
               </v-flex>
@@ -47,22 +54,55 @@
 </style>
 
 <script>
+import LoginService from '../service/LoginService.js'
     export default {
       data () {
+        
         return {
-          pw1:"", pw2:"", em2:"", em1:""          
+          usuario: {},
+          usuarios:[],
+          message:"", 
+          cor:"success", 
+          alert: false, 
+          senha:"", email:"",
+          items:['1 ano', '2 ano', '3 ano']          
         }
       },
       methods:{
-        comPass(pw1,pw2) {
-          if (this.em1 != this.em2 && this.pw1!=this.pw2) {
-            alert("E-mails e senhas diferentes")
-          }else if (this.em1 != this.em2) {
-            alert("E-mails diferente")
-          }else if(this.pw1!=this.pw2){
-            alert("Senhas diferente")
+        async salvar() {
+          let x = LoginService.compararSenha(this.usuario.senha,this.senha);
+          let y = LoginService.compararEmail(this.usuario.email,this.email);
+          let z = LoginService.verificarCampos(this.usuario, this.senha, this.email);
+          if (x == false){
+            this.message = 'Senhas diferentes';
+            this.cor = 'error';
+            this.alert = true;
+            return 
           }
+          if (y == false){
+            this.message = 'E-mails diferentes';
+            this.cor = 'error';
+            this.alert = true; 
+            return
+          }
+          if (y == false && x == false){
+            this.message = 'E-mails e senhas diferentes';
+            this.cor = 'error';
+            this.alert = true;
+            return
+          }
+          if (z == true){
+            this.message = 'Por favor! Preencha todos os campos';
+            this.cor = 'error';
+            this.alert = true;
+            return
+          }
+          await LoginService.salvar(this.usuario)
         }
+      }
+      , 
+      async mounted(){
+        this.usuarios = await LoginService.listar()
       }
     }
 </script>
