@@ -1,6 +1,7 @@
 <template>
+
   <div class="hom3">
-    <div class="car">
+    <center><div class="car">
             <v-carousel>
                 <v-carousel-item
                 v-for="(item,i) in items"
@@ -8,16 +9,19 @@
                 :src="item.src"
                 ></v-carousel-item>
             </v-carousel>
-    </div>
+    </div></center>
     
       <v-layout>
         <v-flex md12 lg12>
           <div class="od1n">
             <p>dhfghadsgfhgadsfdsafkgbdfdhsagfdhgfadfshaybhsadtbfgmndb fhjgdfbdafgduaisfhdgsfdbf dfgdasf lkgdfabsd fgdsafj dasfdasfsah iuewbfds iutg bdfuieg dsbfjsadhfdg</p>
+           
           </div>
         </v-flex>
       </v-layout>
+      <i class="fas fa-home">a</i>
   </div>
+   
 </template>
 <style>
   .v-carousel__controls{

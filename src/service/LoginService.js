@@ -41,6 +41,9 @@ export default class LoginService{
             console.log (error)
         }
     }
+
+
+    
     static async listar(){
         try {
             

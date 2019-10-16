@@ -21,20 +21,30 @@
                       <v-flex xs12 sm6>
                         <v-text-field color="black" outline label="Nome" autofocus v-model="usuario.nome"></v-text-field>
                 
-                        <v-text-field color="black" outline label="Código do Aluno"  v-model="usuario.codigo"></v-text-field>
+                        <v-text-field mask="########" color="black" outline label="Código do Aluno"  v-model="usuario.codigo"></v-text-field>
                         <v-text-field color="black" outline label="E-mail"  v-model="usuario.email"></v-text-field>
                         <v-text-field color="black" outline label="Senha"  v-model="usuario.senha"></v-text-field>
                       </v-flex>
                       <v-flex xs12 sm6>
-                        <v-text-field color="black" outline label="Número de Telefone"  v-model="usuario.telefone"></v-text-field>
+                        <v-text-field mask="(##) #####-####" color="black" outline label="Número de Telefone"  v-model="usuario.telefone"></v-text-field>
                         <!--v-text-field color="black" outline label="Série"></v-text-field-->
-                         <v-select :items="items" label="Selecione a série"  color="black" outlined v-model="usuario.serie"></v-select>
+                         <v-select :items="items" label="Selecione a série" color="black" outline v-model="usuario.serie"></v-select>
                         <v-text-field color="black" outline label="Confirmar e-mail"  v-model="email"></v-text-field>
                         <v-text-field color="black" outline label="Confirmar senha"  v-model="senha"></v-text-field>  
                       </v-flex>
                     </v-layout>
                     </v-container>
-                    <v-btn block color="rgba(211,160,95,.9)" @click="salvar">confirmar</v-btn>
+                    
+                      <v-layout justify-center>
+                        <v-flex sm5 md5 lg5>       
+                          <v-btn block class="conf" color="rgba(211,160,95,.9)" @click="salvar">Confirmar</v-btn> 
+                        </v-flex>
+                        <v-flex sm5 md5 lg5>
+                          <v-btn block class="canc" color="rgba(211,160,95,.9)" @click="cancelar">Cancelar</v-btn>
+                        </v-flex>
+                        
+                      </v-layout>
+                    
                   </v-card-text>  
                 </v-card>
               </v-flex>
@@ -51,6 +61,11 @@
       background-image: url('../assets/img2/img1_1.png');
       background-size: 100% 100%;
     }
+    .v-input__slot{
+      height: 58px;
+    }
+ 
+    
 </style>
 
 <script>
