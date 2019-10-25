@@ -13,10 +13,10 @@
     
       <v-layout>
         <v-flex md12 lg12>
-          <div class="od1n">
-            <p>dhfghadsgfhgadsfdsafkgbdfdhsagfdhgfadfshaybhsadtbfgmndb fhjgdfbdafgduaisfhdgsfdbf dfgdasf lkgdfabsd fgdsafj dasfdasfsah iuewbfds iutg bdfuieg dsbfjsadhfdg</p>
+         <center> <div class="od1n">
+            <p>Historia da escola!</p>
            
-          </div>
+          </div></center>
         </v-flex>
       </v-layout>
       <i class="fas fa-home">a</i>
@@ -35,6 +35,7 @@
     background-color: #f4a460;
     height: 180px;
     margin-top: 80px;
+    width:80%;
   }
   .car{
     width: 80%;

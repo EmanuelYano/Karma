@@ -5,7 +5,7 @@
                 <v-flex xs12 sm7 md6 lg5>
                      <v-alert
                         v-model="alert"
-                        :type="cor"
+                        :color="cor"
                         dismissible>
                         {{mensagem}}
                     </v-alert>
@@ -16,9 +16,9 @@
                             </v-card-title>
                         </v-layout>
                         <v-card-text class="font-weight-regular" > 
-                            <v-text-field color="black" outline label="Digite seu email" v-model="email" autofocus></v-text-field>
-                            <v-text-field color="black" outline label="Digite sua senha" type="password" v-model="pass"></v-text-field>
-                            <v-btn color="rgba(211,160,95,.9)" align-center justify-center @click="tyr" block> Entrar</v-btn>                   
+                            <v-text-field color="black" outline label="Digite seu email" v-model="usuario.email" autofocus></v-text-field>
+                            <v-text-field color="black" outline label="Digite sua senha" type="password" v-model="usuario.senha"></v-text-field>
+                            <v-btn color="rgba(211,160,95,.9)" align-center justify-center @click="entrar" block> Entrar</v-btn>                   
                         </v-card-text>
                         <v-layout justify-center>
                             <v-card-actions>
@@ -37,17 +37,17 @@ import LoginService from '../service/LoginService.js'
 export default {
     data(){
         return{
-            email:"",
-            pass: "",
+            usuario:{ },
             alert: false,
             mensagem: "",
             cor: ""
         }
     },
     methods:{
-        tyr(){
-            let x = LoginService.logar(this.email,this.pass)
-            if(x == true){
+        async entrar(){
+            let usuario = await LoginService.logar(this.usuario)
+            
+            if(usuario){
                 this.cor = 'success'
                 this.mensagem = 'Login realizado com sucesso'
                 this.alert = true

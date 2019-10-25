@@ -1,11 +1,16 @@
 import axios from "axios";
+import configuration from "../../configuration.js"
+
+const url = configuration.api
 
 export default class LoginService{
-    static logar(email,pass){
-        if(email == "123@gmail.com" && pass == "123"){
-            return true
-        }else{
-            return false
+    static async logar(usuario){
+        try {
+            let resposta = await axios.post(url + "/logar", usuario)
+            return resposta.data.usuario
+            
+        } catch (error) {
+            console.log (error)
         }
     }
     static recSenha(email){
@@ -36,7 +41,7 @@ export default class LoginService{
     }
     static async salvar(usuario){
         try {
-            return await axios.post("http://localhost:3000/api/usuarios/", usuario)
+            return await axios.post(url + "/usuarios", usuario)
         } catch (error) {
             console.log (error)
         }
@@ -47,7 +52,7 @@ export default class LoginService{
     static async listar(){
         try {
             
-            let resposta = await axios.get("http://localhost:3000/api/usuarios/") 
+            let resposta = await axios.get(url + "/usuarios") 
             return resposta.data.dados
         } catch (error) {
             console.log (error)

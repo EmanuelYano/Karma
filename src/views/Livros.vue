@@ -1,9 +1,12 @@
 <template>
     <div>
-        <v-container>
-            <div>
-                <v-layout align-center fill-height >
-                   
+        <v-container grid-list-sm>
+            
+                <v-layout row wrap>
+                    <v-flex md2>
+                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                        aaaaaaa
                             <!--v-card
                             class="mx-auto"
                             height="400"
@@ -30,39 +33,46 @@
                             </v-list>
                             </v-navigation-drawer>
                         </v-card-->
-                        
-                    <v-flex md6 lg4>
-                        <div class="view-book">
-                            <div class="luke" v-for="item in info" :key="item.titulo_1">
-                                <v-row align="center" justify="center" >
+                    </v-flex>    
+                    <v-flex xs12 md10>
+                        <v-layout row wrap justify-space-between>
+                            <v-flex xs12 sm6 md4 lg3 class="" v-for="item in info" :key="item.titulo_1">
+                                <v-card color="sif" class="text-xs-center">
+                                    
                                     <h2 class="cap">{{item.titulo_1}}</h2>
-                                    <div class="imagem">
-                                        <v-img                                        
+                                    <v-img                                        
                                             :src="item.src" 
                                             aspect-ratio=".75" 
                                             class="grey lighten" 
-                                            max-width="200  " 
-                                            max-height="700">
-                                        </v-img>
+                                            max-width="200" 
+                                            max-height="700"
+                                            style="margin:0 auto">
+                                    </v-img>
+
+                                    <v-card-title primary-title>
+                                    <div>
+                                        <h3>
+                                            {{item.titulo_2}}
+                                        </h3>
+                                        <p style="margin-top:3px;"> 
+                                            {{item.sinopse}} 
+                                        </p>
+                                        <p>
+                                            {{item.disp}} disponíveis (qtd de livros disponíveis para empréstimo)
+                                        </p>
                                     </div>
-                                    <h3>
-                                        {{item.titulo_2}}
-                                    </h3>
-                                    <p style="margin-top:3px;"> {{item.sinopse}} </p>
-                                    <p>
-                                        {{item.disp}} disponíveis (qtd de livros disponíveis para empréstimo)
-                                    </p>
-                                    
-                                        <v-btn class="th0r" color="success" :to="rota">Reservar</v-btn>
-                                        <v-btn class="th0r" color="info" >Ver mais</v-btn>                            
-                                    
- 
-                                </v-row>
-                            </div>
-                        </div>
+                                    </v-card-title>
+
+                                    <div class="text-xs-center">
+                                        <v-btn  color="success" round :to="item.rota">Reservar</v-btn>
+                                        <v-btn  color="info" round >Ver mais</v-btn>
+                                    </div>
+                                </v-card>                            
+                            </v-flex>
+                        </v-layout>
                     </v-flex>
                 </v-layout>
-            </div>
+            
        </v-container>
     </div>
 </template>
@@ -104,31 +114,6 @@
     }
 </script>
 <style>
-    .btn-book{
-        margin-left:10%;
-        margin-right:10%;
-    }
-    .th0r{
-        border-radius: 100px 100px 100px;
-        height: 35px;
-        width: 130px;
-        font-family: Comic Sans MS, Comic Sans, cursive;   
-        font-size: 16px; 
-        margin-left: 4%;
-    }
-    .luke{
-        margin: 0% 6% 0% 6%;
-        width: 80%;
-        background-color: aquamarine;
-        border: black 1px solid;
-        border-radius:5px 5px 5px;
-        margin-top: 5px;
-    }
-    .luke .imagem{
-        margin-left: 16.5%;
-        margin-top: 3px;
-        margin-bottom: 2%;
-    }
     h3, p{
         color: black;
     }
