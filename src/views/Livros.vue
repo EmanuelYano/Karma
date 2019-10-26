@@ -37,49 +37,66 @@
                                                 {{item.sinopse}} 
                                             </p>
                                             <p>
-                                                {{item.disp}} disponíveis 
+                                               <h3> {{item.disp}} disponíveis </h3> 
                                             </p>
                                         </div>
                                     </v-card-title>
                                 <v-dialog v-model="dialog" max-width="500px">
                                     <template v-slot:activator="{ on }">
                                         <div class="text-xs-center">
-                                            <v-btn  color="success" round v-on="on">Reservar</v-btn>
+                                            <v-btn  color="success" round>Reservar</v-btn>
                                             <v-btn  color="info" round v-on="on">Ver mais</v-btn>
                                         </div>    
                                     </template>
-                                        <v-card>
-                                        <v-card-title>
-                                            <span class="headline">{{ formTitle }}</span>
-                                        </v-card-title>
+                                        <v-card min-width=" ">
+                                            <v-card-title>
+                                                <span class="headline">{{ formTitle }}</span>
+                                            </v-card-title>
 
-                                        <v-card-text>
-                                            <v-container grid-list-md>
-                                                <v-layout wrap>
-                                                    <v-flex xs12 sm6 md4>
-                                                    <v-text-field v-model="editedItem.name" label="Título do livro"></v-text-field>
-                                                    </v-flex>
-                                                    <v-flex xs12 sm6 md4>
-                                                    <v-text-field v-model="editedItem.calories" label="Imagem do livro"></v-text-field>
-                                                    </v-flex>
-                                                    <v-flex xs12 sm6 md4>
-                                                    <v-text-field v-model="editedItem.fat" label="Subtítulo"></v-text-field>
-                                                    </v-flex>
-                                                    <v-flex xs12 sm6 md4>
-                                                    <v-text-field v-model="editedItem.carbs" label="Sinopse"></v-text-field>
-                                                    </v-flex>
-                                                    <v-flex xs12 sm6 md4>
-                                                    <v-text-field v-model="editedItem.protein" label="Disponíveis"></v-text-field>
-                                                    </v-flex>
-                                                </v-layout>
-                                            </v-container>
-                                        </v-card-text>
+                                            <v-card-text>
+                                                <v-container grid-list-md>
+                                                    <v-layout wrap>
+                                                        <v-card class="sif modal-livro text-xs-center">
+                                                            <h2 class="cap">{{item.titulo_1}}</h2>
+                                                            <v-img                                        
+                                                                    :src="item.src" 
+                                                                    aspect-ratio=".75" 
+                                                                    class="grey lighten" 
+                                                                    max-width="300" 
+                                                                    max-height="700"
+                                                                    style="margin:0 auto">
+                                                            </v-img>
 
-                                        <v-card-actions>
-                                            <v-spacer></v-spacer>
-                                            <v-btn color="blue darken-1" flat @click="close">Cancel</v-btn>
-                                            <v-btn color="blue darken-1" flat @click="save">Save</v-btn>
-                                        </v-card-actions>
+                                                            <v-card-title primary-title class="text-xs-center">
+                                                                <div>
+                                                                    <h3>
+                                                                        {{item.titulo_2}}
+                                                                    </h3>
+                                                                    <p style="margin-top:3px;" class="text-xs-justify"> 
+                                                                        {{item.sinopse2}} 
+                                                                    </p>
+                                                                    <p>
+                                                                    <h3> {{item.disp}} disponíveis </h3>
+                                                                    </p>
+                                                                    <p>
+                                                                    <h3> Quantidade de páginas: {{item.paginas}}</h3>
+                                                                    </p>
+                                                                    <p>
+                                                                        <h3>Autor: {{item.autor}} </h3>
+                                                                    </p>
+                                                                    <p>
+                                                                    <h3> Editora: {{item.editora}}</h3>
+                                                                    </p>
+                                                                </div>
+                                                            </v-card-title>
+                                                        </v-card>
+                                                    </v-layout>
+                                                </v-container>
+                                            </v-card-text>
+                                            <v-card-actions>
+                                                <v-spacer></v-spacer>
+                                                <v-btn color="blue darken-1" flat round @click="close"><font-awesome-icon icon="times"/> </v-btn>
+                                            </v-card-actions>
                                         </v-card>
                                     </v-dialog>
                                 </v-card>                            
@@ -97,72 +114,69 @@
         components: {Navbar},
         data(){
             return{
+                dialog: false,
                 info:[
                     {titulo_1: "Criando sites com HTML",
-                        titulo_2: "Sites de Alta Qualidade com HTML e CSS",
+                        titulo_2: "Sites de alta qualidade com HTML e CSS",
                         disp: "4",
                         sinopse:"Construir sites em conformidade com os Padrões Web do W3C, é uma exigência do mercado. Resgatar a finalidade original da linguagem de marcação HTML...",
                         rota: " ", 
-                        src: require("../assets/img1/livro_3.png")},
+                        src: require("../assets/img1/livro_3.png"),
+                        sinopse2:"Construir sites em conformidade com os Padrões Web do W3C, mais do que uma opção de desenvolvimento, é uma exigência do mercado. Resgatar a finalidade original da linguagem de marcação HTML, tal como idealizada pelo seu inventor, Tim Berners-Lee é a palavra-chave que norteia o moderno conceito de escrever HTML. Este livro descreve de forma detalhada cada um dos elementos do HTML, dando ênfase a sua finalidade. Um capítulo é dedicado exclusivamente às folhas de estilo em cascata (CSS), que forma uma dupla inseparável com HTML. Para ilustrar a teoria, os assuntos apresentados são complementados com códigos-fonte, exemplos e figuras. O leitor será guiado passo a passo na construção de um site real e funcional, para consulta e consolidação do aprendizado. No site de apoio ao livro, o leitor encontrará os códigos-fonte para download e informações complementares.",
+                        paginas:"432",
+                        autor:"Maurício Samy Silva",
+                        editora:"Novatec"},
 
                         {titulo_1:"CSS Grid Layout",
                             titulo_2:"CSS: ferramenta de layout",disp:"2",
                             sinopse:"A criação de Layout CSS sempre foi uma tarefa trabalhosa, mas agora os profissionais têm uma ferramenta poderosa ao seu alcance, o CSS Grid Layout...",
                             route:"/",
-                            src: require("../assets/img1/livro_2.jpg")},
+                            src: require("../assets/img1/livro_2.jpg"),
+                            sinopse2:"",
+                            paginas:"",
+                            autor:"",
+                            editora:""},
 
                             {titulo_1:"Engenharia de redes de computadores",
                                 titulo_2:"Evolução da rede mundial de compuatdores",disp:"3",
                                 sinopse:"O livro apresenta as redes de computadores com enfoque para Engenharia e mostra a evolução da rede mundial até a Internet, com base em tecnologia da informação...",
                                 route:"/",
-                                src: require("../assets/img1/livro_1.png")}/*,
+                                src: require("../assets/img1/livro_1.png"), 
+                                sinopse2:"",
+                                paginas:"",
+                                autor:"",
+                                editora:""}/*,
 
                             {titulo_1:"",
                             titulo_2:"",disp:"",
                             sinopse:"",
                             route:"",
-                            src: require("../assets/")}*/
+                            src: require("../assets/"),
+                            sinopse2:"",
+                            paginas:"",
+                            autor:"",
+                            editora:""}*/
                 ],
-                dialog: false,
-        headers: [
-            {
-            text: 'Dessert (100g serving)',
-            align: 'left',
-            sortable: false,
-            value: 'name'
-            },
-            { text: 'Calories', value: 'calories' },
-            { text: 'Fat (g)', value: 'fat' },
-            { text: 'Carbs (g)', value: 'carbs' },
-            { text: 'Protein (g)', value: 'protein' },
-            { text: 'Actions', value: 'name', sortable: false }
-        ],
-        desserts: [],
-        editedIndex: -1,
-        editedItem: {
-            name: '',
-            calories: 0,
-            fat: 0,
-            carbs: 0,
-            protein: 0
-        },
-        defaultItem: {
-            name: '',
-            calories: 0,
-            fat: 0,
-            carbs: 0,
-            protein: 0
-        }
-            }
-        },
-        methods:{       
+                headers: [
+                    {
+            
+                    }
+                ],
+                methods:{   
+                    close () {
+                        this.dialog = false
+                    },    
+                }   
+            } 
         } 
-
     }
 </script>
 <style>
     h3, p{
         color: black;
+    }
+    h2{
+        font-size:28px;
     }
     .back-full{
         height: 100%;
@@ -176,5 +190,12 @@
     }
     .card-liv-list{
         margin-left:5px;    
+    }
+    .modal-livro{
+        top:-45px;
+        margin-bottom: -11%; 
+    }
+    .v-dialog{
+        max-width: 800px !important;
     }
 </style>

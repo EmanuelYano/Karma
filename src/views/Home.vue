@@ -1,44 +1,63 @@
 <template>
-
   <div class="hom3">
-    <center><div class="car">
-            <v-carousel>
-                <v-carousel-item
-                v-for="(item,i) in items"
-                :key="i"
-                :src="item.src"
-                ></v-carousel-item>
-            </v-carousel>
-    </div></center>
-    
-      <v-layout>
-        <v-flex md12 lg12>
-         <center> <div class="od1n">
-            <p>Historia da escola!</p>
-           
-          </div></center>
-        </v-flex>
-      </v-layout>
-      <i class="fas fa-home">a</i>
-  </div>
-   
+    <!--v-card elevation-5 class="cor"-->
+      <center><div class="carousel-local mt-1 pt-4 pb-4" >
+              <v-carousel>
+                  <v-carousel-item
+                  v-for="(item,i) in items"
+                  :key="i"
+                  :src="item.src"
+                  ></v-carousel-item>
+              </v-carousel>
+      </div></center>
+      
+        <v-layout row wrap justify-space-between>
+          <v-flex md12 lg12 >
+          <center> <div class="od1n" >
+              <h1 class="text-xs-center">Apoio e realização</h1>
+                <v-layout>
+                  <v-flex mb-2 style="padding-bottom:50px;" v-for="item in img" :key="item.src">
+                    <v-img  :aspect-ratio="ratio"  
+                                                max-width="400" 
+                                                max-height="200"
+                                                style="margin:0 auto" 
+                                                :src='item.src' class="imagem-home"></v-img>
+                  </v-flex>
+                </v-layout>
+            </div></center>
+          </v-flex>
+        </v-layout>
+    <!--/v-card--> 
+  </div> 
 </template>
 <style>
   .v-carousel__controls{
     background-color:rgba(0,0,0,.3);
     height: 8%;
   }
+  .v-content{
+    padding-bottom: 4px !important;
+  }
   .hom3{
-    
+    height: 100%;
+    background-image: url('../assets/img2/img4.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
   }
   .od1n{
     background-color: #f4a460;
-    height: 180px;
+    height: auto;
     margin-top: 80px;
     width:80%;
   }
-  .car{
+  .carousel-local{
     width: 80%;
+  }
+  .imagem-home{
+    margin:auto;
+  }
+  .cor{
+    color: rgba(0,0,0,.1)
   }
 </style>
   
@@ -60,6 +79,14 @@
           {
             //src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
           }*/
+        ],
+        img: [
+          {
+            src: require('../assets/img1/logo/wbs-logo.png'), ratio: '2'
+          },
+          {
+          src: require('../assets/img1/logo/WBSTEC.png'), ratio:'3'
+          }
         ]
       }
     }

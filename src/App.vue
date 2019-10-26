@@ -6,8 +6,11 @@
         <Navbar />
       <router-view/>   
     </v-content>
-  
+    <v-content>
+      <Footer />
+    </v-content>
   </v-app>  
+  
 </template>
 <style>
   .vision{
@@ -20,10 +23,11 @@
 
 <script>
   import Navbar from '@/components/Navbar'
+  import Footer from '@/components/footer'
 
   export default{
     name: 'App',
-    components: { Navbar },
+    components: { Navbar, Footer },
     data (){
       return{
         //
