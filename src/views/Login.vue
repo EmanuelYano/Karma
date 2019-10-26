@@ -10,7 +10,7 @@
                         {{mensagem}}
                     </v-alert>
                     <v-card color="vision ml-2 mr-2">
-                        <v-layout justify-center="">
+                        <v-layout justify-center>
                             <v-card-title primary-title>
                                 <h1 class="font-weight-light text-uppercase"> Login </h1>
                             </v-card-title>

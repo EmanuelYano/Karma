@@ -1,4 +1,4 @@
 export default{
-    api: 'http://bibliotecwbs-api.herokuapp.com/api'
+    api: 'https://bibliotecwbs-api.herokuapp.com/api'
     //api: 'http://localhost:3000/api'
 }
