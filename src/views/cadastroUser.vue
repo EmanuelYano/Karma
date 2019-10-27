@@ -1,6 +1,6 @@
  <template>
     <div class="cardzin">
-      <h1 v-for="usu in usuarios" :key="usu._id" > {{usu.nome}} </h1>
+      <!--h1 v-for="usu in usuarios" :key="usu._id" > {{usu.nome}} </h1-->
       <v-container fill-height>
           <v-layout align-center justify-center  >
               <v-flex xs12 sm9 md8 lg7>

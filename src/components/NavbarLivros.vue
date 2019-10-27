@@ -1,6 +1,6 @@
 <template>
     <v-card elevation-10>
-      <v-navigation-drawer class="thor" permanent>
+      <v-navigation-drawer class="thor tor" permanent>
         <v-list>
           <v-list-tile
             v-for="item in items"
@@ -20,6 +20,11 @@
       </v-navigation-drawer>
     </v-card>
 </template>
+<style>
+  .tor{
+    width:100% !important;
+  }
+</style>
 <script>
     export default{
         data(){

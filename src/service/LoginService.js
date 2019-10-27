@@ -48,7 +48,7 @@ export default class LoginService{
     }
 
 
-    
+//listar usuários   
     static async listar(){
         try {
             

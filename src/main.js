@@ -11,12 +11,16 @@ import {faNetworkWired} from '@fortawesome/free-solid-svg-icons'
 import {faCss3Alt} from '@fortawesome/free-brands-svg-icons'
 import {faTimes} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import {faEdit} from '@fortawesome/free-solid-svg-icons'
+import {faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 
 library.add(faUserSecret)
 library.add(faHtml5)
 library.add(faNetworkWired)
 library.add(faCss3Alt)
 library.add(faTimes)
+library.add(faEdit)
+library.add(faTrashAlt)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

@@ -3,7 +3,7 @@
         <div grid-list-sm>
             
                 <v-layout row wrap>
-                    <v-flex xs12 sm12 md2 ml-3>
+                    <v-flex xs12 sm12 md2 ml-3 mr-3>
                         <v-layout>
                             <v-content>
                                 <Navbar />
@@ -13,9 +13,9 @@
                 
          
                 
-                    <v-flex xs12 md9 class="liv-list">
+                    <v-flex xs12 md8 class="liv-list">
                         <v-layout row wrap justify-space-between>
-                            <v-flex xs12 sm6 md4 lg4 class="" v-for="item in info" :key="item.titulo_1">
+                            <v-flex xs12 sm6 md4 lg4 m-auto v-for="item in info" :key="item.titulo_1">
                                 <v-card class="sif text-xs-center card-liv-list">
                                     
                                     <h2 class="cap">{{item.titulo_1}}</h2>
@@ -33,7 +33,7 @@
                                             <h3>
                                                 {{item.titulo_2}}
                                             </h3>
-                                            <p style="margin-top:3px;"> 
+                                            <p style="margin-top:3px;" class="text-xs-justify"> 
                                                 {{item.sinopse}} 
                                             </p>
                                             <p>
