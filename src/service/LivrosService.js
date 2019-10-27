@@ -3,7 +3,7 @@ import configuration from "../../configuration.js"
 
 const url = configuration.api
 export default class LivroService{
-    static async cadastrar(){
+    static async salvar(){
         try{
             return await axios.post(url + "/livros", livro)
         }catch(error){

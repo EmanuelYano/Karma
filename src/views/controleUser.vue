@@ -4,7 +4,7 @@
             <v-flex >
                  <div>
                     <v-toolbar flat color="white">
-                    <v-toolbar-title>Lista de livros adicionados</v-toolbar-title>
+                    <v-toolbar-title>Lista de usuários cadastrados</v-toolbar-title>
                     <v-divider
                         class="mx-2"
                         inset
@@ -13,36 +13,39 @@
                     <v-spacer></v-spacer>
                     <v-dialog v-model="dialog" max-width="500px">
                         <template v-slot:activator="{ on }">
-                            <v-btn color="info" dark class="mb-2" v-on="on">Adicionar novo livro</v-btn>
+                            <v-btn color="info" dark class="mb-2" v-on="on">Adicionar novo usuário</v-btn>
                         </template>
                         <v-card>
                             <v-card-title>
-                                <span class="headline">Novo Livro</span>
+                                <span class="headline">Novo usuário</span>
                             </v-card-title>
 
                             <v-card-text>
                                 <v-container grid-list-md>
                                     <v-layout wrap>
                                         <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livro.nome_livro" label="Nome"></v-text-field>
+                                        <v-text-field v-model="usuario.nome" label="Nome" autofocus aria-required></v-text-field>
                                         </v-flex>
                                         <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livro.subtitulo" label="Subtitulo"></v-text-field>
+                                        <v-text-field v-model="usuario.codigo" label="Código do aluno"></v-text-field>
                                         </v-flex>
                                         <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livro.sinopse" label="Sinopse"></v-text-field>
+                                        <v-text-field v-model="usuario.email" label="E-mail"></v-text-field>
                                         </v-flex>
                                         <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livro.autor" label="Autor"></v-text-field>
+                                        <v-text-field v-model="email" label="Confirmar E-mail"></v-text-field>
                                         </v-flex>
                                         <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livro.editora" label="Editora"></v-text-field>
+                                        <v-text-field v-model="usuario.senha" label="Senha" type="password"></v-text-field>
                                         </v-flex>
                                         <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livro.n_paginas" type="number" label="Quantidade de páginas"></v-text-field>
+                                        <v-text-field v-model="senha" label="Confirmar senha" type="password"></v-text-field>
                                         </v-flex>
                                         <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livro.n_disp" type="number" label="Quantidade disnponível"></v-text-field>
+                                        <v-text-field v-model="usuario.telefone" mask="(##) #####-####" placeholder="(XX) xxxx-xxxx" label="Telefone"></v-text-field>
+                                        </v-flex>
+                                        <v-flex xs12 sm6 md4>
+                                        <v-text-field v-model="usuario.serie"  label="Série"></v-text-field>
                                         </v-flex>
                                     </v-layout>
                                 </v-container>
@@ -56,13 +59,14 @@
                         </v-card>
                     </v-dialog>
                     </v-toolbar>
-                    <v-data-table :headers="headers" :items="listaLivros" class="elevation-1">
+                    <v-data-table :headers="headers" :items="listarUsuarios" class="elevation-1">
                         <template v-slot:items="props">
-                            <td>{{ props.item.nome_livro }}</td>
-                            <td class="text-xs-right">{{ props.item.autor }}</td>
-                            <td class="text-xs-right">{{ props.item.editora }}</td>
-                            <td class="text-xs-right">{{ props.item.n_paginas }}</td>
-                            <td class="text-xs-right">{{ props.item.n_disp }}</td>
+                            <td>{{ props.item.nome }}</td>
+                            <td class="text-xs-right">{{ props.item.codigo }}</td>
+                            <td class="text-xs-right">{{ props.item.email }}</td>
+                            <td class="text-xs-right">{{ props.item.senha }}</td>
+                            <td class="text-xs-right">{{ props.item.telefone }}</td>
+                            <td class="text-xs-right">{{ props.item.serie }}</td>
                             <td class="justify-center layout px-0">
                             <!--v-icon small  class="mr-2" @click="editItem(props.item)"> </v-icon-->
                             <font-awesome-icon small class="mr-3" size="2x" @click="editItem(props.item)" icon="edit"/>
@@ -87,26 +91,27 @@
     }
 </style>
 <script>
-import LivrosService from '../service/LivrosService.js'
+import LoginService from '../service/LoginService.js'
     export default {
         data: () => ({
-        dialog: false,
+        dialog: false, email:'', senha:'',
         headers: [
             {
-            text: 'Nome do livro',
+            text: 'Nome do usuário',
             align: 'left',
             sortable: false,
-            value: 'nome_livro'
+            value: 'nome'
             },
-            { text: 'Autor', value: 'autor' },
-            { text: 'Editora', value: 'editora' },
-            { text: 'Nº páginas', value: 'n_paginas' },
-            { text: 'Nº disponível', value: 'n_disp' },
+            { text: 'Código do aluno', value: 'codigo' },
+            { text: 'E-mail', value: 'email' },
+            { text: 'Senha', value:'senha' },
+            { text: 'Telefone', value: 'telefone' },
+            { text: 'Série', value: 'serie' },
             { text: 'Ação', value: 'name', sortable: false }
         ],
-        listaLivros: [],
+        listarUsuarios: [],
         
-        livro: {}
+        usuario: {}
         }),
 
         computed: {
@@ -118,6 +123,7 @@ import LivrosService from '../service/LivrosService.js'
         watch: {
             dialog (val) {
                 val || this.cancelar()
+                val || this.salvar()
             },
             created () {
                 this.initialize()
@@ -126,14 +132,16 @@ import LivrosService from '../service/LivrosService.js'
 
         methods: {
             async initialize () {
-                this.listaLivros = await LivrosService.listar()
+                this.listarUsuarios = await LoginService.listar()
                 
             },
             cancelar () {
                 this.dialog = false
             },
             async salvar (){
-            await LivrosService.salvar(this.livro) 
+                await LoginService.salvar(this.usuario)
+                this.dialog = false
+                
             }
     }
 }

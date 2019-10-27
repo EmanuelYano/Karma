@@ -9,6 +9,8 @@ import Home from './views/Home.vue'
 import Livros from './views/lista-livros.vue'
 import cadBook from './views/cadastroBook.vue'
 import Agua from './views/agua-html.vue'
+import perfil from './views/perfil-usuario.vue'
+import usuarios from './views/controleUser.vue'
 
 Vue.use(Router)
 
@@ -60,6 +62,16 @@ export default new Router({
       path: '/agua',
       name: 'AGUA',
       component: Agua
+    },
+    {
+      path: '/perfil',
+      name: 'Perfil do Usuário',
+      component: perfil
+    },
+    {
+      path: '/controle-usuarios',
+      name: 'Controle dos usuários',
+      component: usuarios
     }
   ]
 })

@@ -23,14 +23,18 @@
                 
                         <v-text-field mask="########" color="black" outline label="Código do Aluno"  v-model="usuario.codigo"></v-text-field>
                         <v-text-field color="black" outline label="E-mail"  v-model="usuario.email"></v-text-field>
-                        <v-text-field color="black" outline label="Senha"  v-model="usuario.senha"></v-text-field>
+                        <v-text-field color="black" outline label="Confirmar e-mail"  v-model="email"></v-text-field>
+                        
                       </v-flex>
                       <v-flex xs12 sm6>
-                        <v-text-field mask="(##) #####-####" color="black" outline label="Número de Telefone"  v-model="usuario.telefone"></v-text-field>
-                        <!--v-text-field color="black" outline label="Série"></v-text-field-->
-                         <v-select :items="items" label="Selecione a série" color="black" outline v-model="usuario.serie"></v-select>
-                        <v-text-field color="black" outline label="Confirmar e-mail"  v-model="email"></v-text-field>
+                        <v-text-field color="black" outline label="Senha"  v-model="usuario.senha"></v-text-field>
                         <v-text-field color="black" outline label="Confirmar senha"  v-model="senha"></v-text-field>  
+                        <v-text-field mask="(##) #####-####" color="black" outline label="Número de Telefone"  v-model="usuario.telefone"></v-text-field>
+                
+                        <!--v-text-field color="black" outline label="Série"></v-text-field-->
+                        <v-select :items="items" label="Selecione a série" color="black" outline v-model="usuario.serie"></v-select>
+                        <the-mask mask="ZZZ" :tokens="hextokens" />
+                        
                       </v-flex>
                     </v-layout>
                     </v-container>
@@ -74,13 +78,19 @@ import LoginService from '../service/LoginService.js'
       data () {
         
         return {
+          hextokens:{
+            Z:{
+              pattern: /[a-z,A-Z]/,
+              transform: v => v.toLocaleUpperCase()
+            }
+          },
           usuario: {},
           usuarios:[],
           message:"", 
           cor:"success", 
           alert: false, 
           senha:"", email:"",
-          items:['1 ano', '2 ano', '3 ano']          
+          items:['1 ano', '2 ano', '3 ano', '1 TI', '2 TI', '3 TI']          
         }
       },
       methods:{
