@@ -6,7 +6,7 @@ import cremedemilho from './views/cremedemilho.vue'
 import cremedealho from './views/cremedealho.vue'
 import Cadastro from './views/cadastroUser.vue'
 import Home from './views/Home.vue'
-import Livros from './views/Livros.vue'
+import Livros from './views/lista-livros.vue'
 import cadBook from './views/cadastroBook.vue'
 import Agua from './views/agua-html.vue'
 
@@ -47,7 +47,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/Livros',
+      path: '/lista-livros',
       name: 'Livros',
       component: Livros
     },

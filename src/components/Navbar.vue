@@ -92,7 +92,7 @@
         drawer: false,
         items: [
           { title: 'Home', icon: 'home', route: '/' },  
-          { title: 'Livros', icon: 'local_library', route: '/Livros' },
+          { title: 'Livros', icon: 'local_library', route: '/lista-livros' },
           { title: 'Cadastro de livros', icon: 'menu_book', route: '/Book' },
           { title: 'Agua', icon:'pool', route:'/agua'}
         ]
