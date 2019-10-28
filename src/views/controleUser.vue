@@ -19,43 +19,42 @@
                             <v-card-title>
                                 <span class="headline">Novo usuário</span>
                             </v-card-title>
+                                <v-card-text>
+                                    <v-container grid-list-md>
+                                        <v-layout wrap>
+                                            <v-flex xs12 sm6 md4>
+                                            <v-text-field v-model="usuario.nome" label="Nome" autofocus aria-required></v-text-field>
+                                            </v-flex>
+                                            <v-flex xs12 sm6 md4>
+                                            <v-text-field v-model="usuario.codigo" label="Código do aluno"></v-text-field>
+                                            </v-flex>
+                                            <v-flex xs12 sm6 md4>
+                                            <v-text-field v-model="usuario.email" label="E-mail"></v-text-field>
+                                            </v-flex>
+                                            <v-flex xs12 sm6 md4>
+                                            <v-text-field v-model="email" label="Confirmar E-mail"></v-text-field>
+                                            </v-flex>
+                                            <v-flex xs12 sm6 md4>
+                                            <v-text-field v-model="usuario.senha" label="Senha" type="password"></v-text-field>
+                                            </v-flex>
+                                            <v-flex xs12 sm6 md4>
+                                            <v-text-field v-model="senha" label="Confirmar senha" type="password"></v-text-field>
+                                            </v-flex>
+                                            <v-flex xs12 sm6 md4>
+                                            <v-text-field v-model="usuario.telefone" mask="(##) #####-####" placeholder="(XX) xxxx-xxxx" label="Telefone"></v-text-field>
+                                            </v-flex>
+                                            <v-flex xs12 sm6 md4>
+                                            <v-text-field v-model="usuario.serie"  label="Série"></v-text-field>
+                                            </v-flex>
+                                        </v-layout>
+                                    </v-container>
+                                </v-card-text>
 
-                            <v-card-text>
-                                <v-container grid-list-md>
-                                    <v-layout wrap>
-                                        <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="usuario.nome" label="Nome" autofocus aria-required></v-text-field>
-                                        </v-flex>
-                                        <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="usuario.codigo" label="Código do aluno"></v-text-field>
-                                        </v-flex>
-                                        <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="usuario.email" label="E-mail"></v-text-field>
-                                        </v-flex>
-                                        <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="email" label="Confirmar E-mail"></v-text-field>
-                                        </v-flex>
-                                        <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="usuario.senha" label="Senha" type="password"></v-text-field>
-                                        </v-flex>
-                                        <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="senha" label="Confirmar senha" type="password"></v-text-field>
-                                        </v-flex>
-                                        <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="usuario.telefone" mask="(##) #####-####" placeholder="(XX) xxxx-xxxx" label="Telefone"></v-text-field>
-                                        </v-flex>
-                                        <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="usuario.serie"  label="Série"></v-text-field>
-                                        </v-flex>
-                                    </v-layout>
-                                </v-container>
-                            </v-card-text>
-
-                            <v-card-actions>
-                                <v-spacer></v-spacer>
-                                <v-btn color="blue darken-1" flat @click="cancelar">Cancelar</v-btn>
-                                <v-btn color="blue darken-1" flat @click="salvar">Salvar</v-btn>
-                            </v-card-actions>
+                                <v-card-actions>
+                                    <v-spacer></v-spacer>
+                                    <v-btn color="blue darken-1" flat @click="cancelar">Cancelar</v-btn>
+                                    <v-btn color="blue darken-1" flat @click="salvar">Salvar</v-btn>
+                                </v-card-actions>
                         </v-card>
                     </v-dialog>
                     </v-toolbar>
@@ -123,7 +122,6 @@ import LoginService from '../service/LoginService.js'
         watch: {
             dialog (val) {
                 val || this.cancelar()
-                val || this.salvar()
             },
             created () {
                 this.initialize()
@@ -140,7 +138,6 @@ import LoginService from '../service/LoginService.js'
             },
             async salvar (){
                 await LoginService.salvar(this.usuario)
-                this.dialog = false
                 
             }
     }

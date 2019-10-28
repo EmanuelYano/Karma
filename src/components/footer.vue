@@ -3,18 +3,34 @@
     dark
     height="auto">
     <v-layout>
-        <v-card
+        
+      <v-card
         flat
         tile
         class="sif lighten-1 black--text text-xs-center">
-        <v-flex>
-            <v-card-text class="black--text pt-0">
-                <br />Escola Estadual Waldemir Barros da Silva.
-                Rua Palmácia, S/N, Moreninhas. <br/> 
-                Telefone: 3314-9014 <br />
-                Email para contato: eewbs@sed.ms.gov.br
-            </v-card-text>
+        
+       
+        <v-flex md4 lg12 >
+            
+            <v-layout align-center justify-start row fill-height>
+                <h2 class="text-xs-center titulo-imagem">Apoio:</h2>
+                <v-flex class="img-apoio" xs2 m-0 mb-2 v-for="item in img" :key="item.src">
+                    <v-img style="margin:0 auto" :src='item.src' class="imagem-home" />
+                </v-flex>
+                <v-flex xs10 align-self-start>
+                    <v-card-text class="info-escola black--text pt-0">
+                        <br />Escola Estadual Waldemir Barros da Silva.
+                        Rua Palmácia, S/N, Moreninhas. <br/> 
+                        Email para contato: eewbs@sed.ms.gov.br<br />
+                        Telefone: 3314-9014 
+                    </v-card-text>
+                </v-flex>
+            </v-layout>
         </v-flex>
+            
+
+            
+        
         <v-flex>
             <v-layout align-center justify-end row fill-height>
                 
@@ -34,4 +50,29 @@
     .v-card{
         width:100% !important;
     }
+    .imagem-home{
+        margin:auto;
+        width:60%;
+    }
+    .info-imagem{
+        
+    }
+    .img-apoio{
+        margin-left: -3%;
+    }
+
 </style>
+<script>
+export default {
+    data: () => ({
+        img: [
+          {
+            src: require('../assets/img1/logo/wbs-logo.png')
+          },
+          {
+          src: require('../assets/img1/logo/WBSTEC.png')
+          }
+        ]
+    })
+}
+</script>
