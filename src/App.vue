@@ -2,7 +2,7 @@
 
   <v-app>
     
-    <v-content>
+    <v-content >
         <Navbar />
       <router-view/>   
     </v-content>

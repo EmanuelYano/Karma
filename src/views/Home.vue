@@ -2,7 +2,10 @@
   <div class="hom3">
     <div class="fundo-home">
       <v-img aspect-ratio="" :src='src' />
-    </div>      
+    </div>  
+    <div class="desenvolvendo">
+      <v-img aspect-ratio="" :src='src2' />
+    </div>     
     
      
   </div> 
@@ -14,8 +17,6 @@
   }
   .v-content{
     padding-bottom: 4px !important;
-  }
-  .hom3{
   }
   .fundo-home{
     background-image: url('../assets/img2/img_fundo_home.jpg');
@@ -31,7 +32,11 @@
   .carousel-local{
     width: 80%;
   }
-
+  .desenvolvendo{
+    width: 40%;
+    height: 40%;
+    margin: auto;
+  }
   .cor{
     color: rgba(0,0,0,.1)
   }
@@ -43,20 +48,7 @@
     data () {
       return {
         src: require('../assets/img2/img_fundo_home.jpg'),
-        items: [
-          {
-            src: require('../assets/img2/img9_1.jpg')
-          },
-          {
-            src: require('../assets/img2/img21_1.jpg')
-          },
-          {
-            src: require('../assets/img2/img28_1.jpg')
-          }/*,
-          {
-            //src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
-          }*/
-        ]
+        src2: require('../assets/img2/construindo.jpg')
       }
     }
   }

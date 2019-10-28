@@ -27,8 +27,8 @@
                         
                       </v-flex>
                       <v-flex xs12 sm6>
-                        <v-text-field color="black" outline label="Senha"  v-model="usuario.senha"></v-text-field>
-                        <v-text-field color="black" outline label="Confirmar senha"  v-model="senha"></v-text-field>  
+                        <v-text-field color="black" outline type="password" label="Senha"  v-model="usuario.senha"></v-text-field>
+                        <v-text-field color="black" outline type="password" label="Confirmar senha"  v-model="senha"></v-text-field>  
                         <v-text-field mask="(##) #####-####" color="black" outline label="Número de Telefone"  v-model="usuario.telefone"></v-text-field>
                 
                         <!--v-text-field color="black" outline label="Série"></v-text-field-->
@@ -61,9 +61,10 @@
             transform: translateY(-12px) scale(0.72) !important;
         }
     .cardzin{
-      height: 100%;
-      background-image: url('../assets/img2/img1_1.png');
-      background-size: 100% 100%;
+      height: 800px;
+      /*background-image: url('../assets/img2/img1_1.png');
+      background-size: 100% 100%;*/
+      background-color: #d28f3b;
     }
     .v-input__slot{
       height: 58px;

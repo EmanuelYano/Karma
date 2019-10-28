@@ -7,10 +7,10 @@
       <v-card
         flat
         tile
-        class="sif lighten-1 black--text text-xs-center">
+        class="loki lighten-1 white--text text-xs-center">
         
        
-        <v-flex md4 lg12 >
+        <v-flex md9 lg10 >
             
             <v-layout align-center justify-start row fill-height>
                 <h2 class="text-xs-center titulo-imagem">Apoio:</h2>
@@ -18,7 +18,7 @@
                     <v-img style="margin:0 auto" :src='item.src' class="imagem-home" />
                 </v-flex>
                 <v-flex xs10 align-self-start>
-                    <v-card-text class="info-escola black--text pt-0">
+                    <v-card-text class="info-escola white--text pt-0">
                         <br />Escola Estadual Waldemir Barros da Silva.
                         Rua Palmácia, S/N, Moreninhas. <br/> 
                         Email para contato: eewbs@sed.ms.gov.br<br />
@@ -39,7 +39,7 @@
 
         <v-divider></v-divider>
 
-            <v-card-text class="black--text">
+            <v-card-text class="white--text">
                 &copy;2019 — <strong>Emanuel Yano</strong>
             </v-card-text>
         </v-card>

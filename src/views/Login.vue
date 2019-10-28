@@ -85,10 +85,12 @@ export default {
          transform: translateY(-12px) scale(0.72) !important;
     }
     .teste{
-        height: 100%;
+        /*height: 100%;
         background-image: url("../assets/img2/img22.jpg"); 
         background-size: 100% 100%;
-        background-repeat: no-repeat;   
+        background-repeat: no-repeat; */
+        background-color: #d28f3b;
+        height: 800px;  
     }
     .vision{
         background-color: rgba(222,184,135,.9);

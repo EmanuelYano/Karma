@@ -10,6 +10,7 @@ Vue.use(Vuetify, {
     thor: '#FFDEAD',
     sif: '#DEB887',
     hela: "#EED082",
-    wanda: '#49b675'
+    wanda: '#49b675',
+    loki: '#000000'
   }
 })
