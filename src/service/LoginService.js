@@ -38,6 +38,7 @@ export default class LoginService{
         if( usuario.senha == "" || senha == "" || usuario.email == "" || email == "" || usuario.nome == "" || usuario.codigo == "" || usuario.telefone == "" || usuario.serie == ""){
             return true;
         }
+        return usuario.serie;
     }
     static async salvar(usuario){
         try {
@@ -46,12 +47,18 @@ export default class LoginService{
             console.log (error)
         }
     }
+    static async verificarDuploCad(){
+        try {
+            
+        } catch (error) {
+            
+        }
+    }
 
 
 //listar usuários   
     static async listar(){
-        try {
-            
+        try {           
             let resposta = await axios.get(url + "/usuarios") 
             return resposta.data.dados
         } catch (error) {

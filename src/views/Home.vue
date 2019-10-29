@@ -1,13 +1,30 @@
 <template>
   <div class="hom3">
-    <div class="fundo-home">
+    <!--div class="fundo-home">
       <v-img aspect-ratio="" :src='src' />
-    </div>  
-    <div class="desenvolvendo">
+    </div-->  
+       
+    <v-parallax :src="src">
+      <v-layout align-center column justify-center>    
+          <h1 class="display-2 font-weight-thin mb-3"></h1>
+          <h4 class="subheading"></h4>
+      </v-layout>
+    </v-parallax>
+    <!--div class="desenvolvendo">
       <v-img aspect-ratio="" :src='src2' />
-    </div>     
-    
-     
+    </div--> 
+    <br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br />
   </div> 
 </template>
 <style>
@@ -17,6 +34,9 @@
   }
   .v-content{
     padding-bottom: 4px !important;
+  }
+  .v-parallax{
+    height: 715px !important;
   }
   .fundo-home{
     background-image: url('../assets/img2/img_fundo_home.jpg');

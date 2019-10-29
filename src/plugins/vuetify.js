@@ -7,7 +7,7 @@ Vue.use(Vuetify, {
   theme: {
     Primary: '#9652ff',
     info: '#ffaa2c',
-    thor: '#FFDEAD',
+    thor: '#f0cf9f',
     sif: '#DEB887',
     hela: "#EED082",
     wanda: '#49b675',

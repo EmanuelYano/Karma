@@ -118,10 +118,11 @@ import LoginService from '../service/LoginService.js'
                 return this.editedIndex === -1 ? 'Novo Livro' : 'Editar livro'
             }
         },
-
+        
         watch: {
             dialog (val) {
                 val || this.cancelar()
+                val || this.salvar()
             },
             created () {
                 this.initialize()
@@ -131,14 +132,14 @@ import LoginService from '../service/LoginService.js'
         methods: {
             async initialize () {
                 this.listarUsuarios = await LoginService.listar()
-                
             },
             cancelar () {
                 this.dialog = false
             },
             async salvar (){
                 await LoginService.salvar(this.usuario)
-                
+                console.log(this.usuario.serie) 
+                this.dialog = false               
             }
     }
 }

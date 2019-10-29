@@ -16,7 +16,7 @@
                   </v-layout>
                   <v-card-text>
                     
-                    <v-container grid-list-xs>
+                    <v-container grid-list-xs id="form">
                     <v-layout row wrap>
                       <v-flex xs12 sm6>
                         <v-text-field color="black" outline label="Nome" autofocus v-model="usuario.nome"></v-text-field>
@@ -124,11 +124,20 @@ import LoginService from '../service/LoginService.js'
             return
           }
           await LoginService.salvar(this.usuario)
+          if(LoginService.salvar(this.usuario) == true){
+            this.message = 'Cadastro efetuado com sucesso'
+            this.cor = 'success'
+            this.alert = true;
+            return
+          }
+          console.log(this.usuario.serie)
         }
-      }
-      , 
+      }, 
       async mounted(){
         this.usuarios = await LoginService.listar()
+      },
+      async cancelar(){
+        await Object.assign(this.$data, this.$options.data())
       }
     }
 </script>
