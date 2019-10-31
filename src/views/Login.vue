@@ -64,12 +64,12 @@ export default {
     methods:{
         async entrar(){
             let usuario = await LoginService.logar(this.usuario)
-            console.log(usuario)
+            console.log()
             if(usuario){
                 this.cor = 'success'
                 this.mensagem = 'Login realizado com sucesso'
                 this.alert = true
-                window.location.replace('perfil')
+                //window.location.replace('perfil')
             }else{
                 this.cor = 'error'
                 this.mensagem = 'Erro ao realizar login. Email ou senha inválidos!'

@@ -1,7 +1,7 @@
 <template>
   <v-footer
     dark
-    height="auto" style="width:100%; position: absolute;
+    height="auto" style="width:100%; position: relative;
 bottom: 0;">
     <v-layout>
         

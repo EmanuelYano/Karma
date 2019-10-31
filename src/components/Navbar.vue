@@ -10,7 +10,7 @@
                   <span class="ml-2 font-weight-bold">wbs</span> 
                 </v-toolbar-title>               
                   <v-spacer></v-spacer> 
-                  <div class="loki">
+                  <div>
                     <v-text-field label="Pesquisar" class="ml-5 mt-3" color="black" v-if="mostra"> </v-text-field>
                   </div>
                   <v-btn icon @click="mostraInput">

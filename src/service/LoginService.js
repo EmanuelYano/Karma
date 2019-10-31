@@ -7,6 +7,7 @@ export default class LoginService{
     static async logar(usuario){
         try {
             let resposta = await axios.post(url + "/logar", usuario)
+            console.log(resposta)
             return resposta.data.usuario
             
         } catch (error) {
@@ -40,23 +41,30 @@ export default class LoginService{
         }
         return usuario.serie;
     }
+    static async verDupli(usuario){
+        try{
+            let resposta = await axios.post(url + "/duplicidade", usuario)
+            return resposta.data.usuario
+        }catch{
+            console.log (error)
+        }
+    }
     static async salvar(usuario){
         try {
-            return await axios.post(url + "/usuarios", usuario)
+            //let ok = await axios.get(url + "/duplicidade", usuario)
+            //console.log(ok)
+            //if(ok == false){
+                return await axios.post(url + "/usuarios", usuario)
+            //}else{
+                //return true
+            //}    
         } catch (error) {
             console.log (error)
         }
     }
-    static async verificarDuploCad(){
-        try {
-            
-        } catch (error) {
-            
-        }
-    }
 
 
-//listar usuários   
+    //listar usuários   
     static async listar(){
         try {           
             let resposta = await axios.get(url + "/usuarios") 
@@ -65,5 +73,33 @@ export default class LoginService{
             console.log (error)
         }
     }
-    
+    //deletar usuario
+    static async deletar(_id){
+        try {
+            let resposta = await axios.delete(url + "/usuarios/" + _id)
+            return true
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    //buscar usuario por id
+    static async buscarid(_id){
+        try {
+            let resposta = await axios.get(url + "/usuarios/" + _id)
+            console.log(resposta)
+            return resposta.data.dados
+        } catch (error) {
+            console.log(error)
+        }
+    } 
+    //editar usuario
+    static async editar(usu){
+        try {
+            let reposta = await axios.put(url + "/usuarios/" + usu)
+            return true
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }
+
