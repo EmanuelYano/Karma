@@ -36,10 +36,10 @@ export default class LoginService{
         }
     }
     static verificarCampos(usuario, senha, email){
+        console.log(usuario.senha)
         if( usuario.senha == "" || senha == "" || usuario.email == "" || email == "" || usuario.nome == "" || usuario.codigo == "" || usuario.telefone == "" || usuario.serie == ""){
             return true;
         }
-        return usuario.serie;
     }
     static async verDupli(usuario){
         try{
@@ -77,7 +77,7 @@ export default class LoginService{
     static async deletar(_id){
         try {
             let resposta = await axios.delete(url + "/usuarios/" + _id)
-            return true
+            return resposta
         } catch (error) {
             console.log(error)
         }
@@ -95,8 +95,8 @@ export default class LoginService{
     //editar usuario
     static async editar(usu){
         try {
-            let reposta = await axios.put(url + "/usuarios/" + usu)
-            return true
+            let resposta = await axios.put(url + "/usuarios", usu)
+            return resposta
         } catch (error) {
             console.log(error)
         }

@@ -15,10 +15,10 @@
                 
                     <v-flex xs12 md8 class="liv-list">
                         <v-layout row wrap justify-space-between>
-                            <v-flex xs12 sm6 md4 lg4 m-auto v-for="item in info" :key="item.titulo_1">
+                            <v-flex xs12 sm6 md4 lg4 m-auto v-for="item in info" :key="item.nome_livro">
                                 <v-card class="sif text-xs-center card-liv-list">
                                     
-                                    <h2 class="cap">{{item.titulo_1}}</h2>
+                                    <h2 class="cap text-truncate">{{item.nome_livro}}</h2>
                                     <v-img                                        
                                             :src="item.src" 
                                             aspect-ratio=".75" 
@@ -29,37 +29,36 @@
                                     </v-img>
 
                                     <v-card-title primary-title class="text-xs-center">
-                                        <div>
+                                        <div class="text-truncate">
                                             <h3>
-                                                {{item.titulo_2}}
+                                                {{item.subtitulo}}
                                             </h3>
                                             <p style="margin-top:3px;" class="text-xs-justify"> 
                                                 {{item.sinopse}} 
                                             </p>
                                             <p>
-                                               <h3> {{item.disp}} disponíveis </h3> 
+                                               <h3> {{item.n_disp}} disponíveis </h3> 
                                             </p>
                                         </div>
                                     </v-card-title>
-                                <v-dialog v-model="dialog" max-width="500px">
-                                    <template v-slot:activator="{ on }">
-                                        <div class="text-xs-center">
+                                    <div class="text-xs-center">
                                             <v-btn  color="success" round>Reservar</v-btn>
-                                            <v-btn  color="info" round v-on="on">Ver mais</v-btn>
-                                        </div>    
-                                    </template>
+                                            <v-btn  color="info" round @click="verMais(item._id)">Ver mais</v-btn>
+                                    </div>
+                                </v-card>
+                                <!-- Ver mais -->  
+                                <v-dialog v-model="dialog" max-width="500px">                               
                                         <v-card min-width=" ">
                                             <v-card-title>
-                                                <span class="headline">{{ formTitle }}</span>
+                                                <span class="headline"><!--{{ formTitle }}--></span>
                                             </v-card-title>
-
                                             <v-card-text>
                                                 <v-container grid-list-md>
                                                     <v-layout wrap>
                                                         <v-card class="sif modal-livro text-xs-center">
-                                                            <h2 class="cap">{{item.titulo_1}}</h2>
+                                                            <h2 class="cap">{{verMaisInfoLivro.nome_livro}}</h2>
                                                             <v-img                                        
-                                                                    :src="item.src" 
+                                                                    :src="item.link" 
                                                                     aspect-ratio=".75" 
                                                                     class="grey lighten" 
                                                                     max-width="300" 
@@ -70,22 +69,22 @@
                                                             <v-card-title primary-title class="text-xs-center">
                                                                 <div>
                                                                     <h3>
-                                                                        {{item.titulo_2}}
+                                                                        {{verMaisInfoLivro.subtitulo}}
                                                                     </h3>
                                                                     <p style="margin-top:3px;" class="text-xs-justify"> 
-                                                                        {{item.sinopse2}} 
+                                                                        {{verMaisInfoLivro.sinopse}} 
                                                                     </p>
                                                                     <p>
-                                                                    <h3> {{item.disp}} disponíveis </h3>
+                                                                    <h3> {{verMaisInfoLivro.n_disp}} disponíveis </h3>
                                                                     </p>
                                                                     <p>
-                                                                    <h3> Quantidade de páginas: {{item.paginas}}</h3>
+                                                                    <h3> Quantidade de páginas: {{verMaisInfoLivro.n_paginas}}</h3>
                                                                     </p>
                                                                     <p>
-                                                                        <h3>Autor: {{item.autor}} </h3>
+                                                                        <h3>Autor: {{verMaisInfoLivro.autor}} </h3>
                                                                     </p>
                                                                     <p>
-                                                                    <h3> Editora: {{item.editora}}</h3>
+                                                                    <h3> Editora: {{verMaisInfoLivro.editora}}</h3>
                                                                     </p>
                                                                 </div>
                                                             </v-card-title>
@@ -98,8 +97,7 @@
                                                 <v-btn color="blue darken-1" flat round @click="close"><font-awesome-icon icon="times"/> </v-btn>
                                             </v-card-actions>
                                         </v-card>
-                                    </v-dialog>
-                                </v-card>                            
+                                    </v-dialog>                                                           
                             </v-flex>
                         </v-layout>
                     </v-flex>
@@ -109,6 +107,12 @@
 </template>
 <script>
     import Navbar from '@/components/NavbarLivros'
+    import LivrosService from '../service/LivrosService.js'
+    import Vue from 'vue'
+    import BootstrapVue from 'bootstrap-vue'
+    import 'bootstrap/dist/css/bootstrap.css'
+    import 'bootstrap-vue/dist/bootstrap-vue.css'
+    Vue.use(BootstrapVue)
     export default {
         name:'Livros',
         components: {Navbar},
@@ -116,7 +120,7 @@
             return{
                 dialog: false,
                 info:[
-                    {titulo_1: "Criando sites com HTML",
+                    /*{titulo_1: "Criando sites com HTML",
                         titulo_2: "Sites de alta qualidade com HTML e CSS",
                         disp: "4",
                         sinopse:"Construir sites em conformidade com os Padrões Web do W3C, é uma exigência do mercado. Resgatar a finalidade original da linguagem de marcação HTML...",
@@ -145,31 +149,33 @@
                                 sinopse2:"",
                                 paginas:"",
                                 autor:"",
-                                editora:""}/*,
-
-                            {titulo_1:"",
-                            titulo_2:"",disp:"",
-                            sinopse:"",
-                            route:"",
-                            src: require("../assets/"),
-                            sinopse2:"",
-                            paginas:"",
-                            autor:"",
-                            editora:""}*/
+                                editora:""},*/
                 ],
-                headers: [
-                    {
-            
-                    }
-                ],
-                methods:{   
-                    close () {
-                        this.dialog = false
-                    },    
-                }   
-            } 
+                listarLivros: {},
+                verMaisInfoLivro: {},
+                headers: [{}]
+                }
+            },
+            created(){
+                this.initialize()
+            },
+            methods:{   
+                close () {
+                    this.dialog = false
+                },
+                async initialize(){
+                    this.listarLivros = await LivrosService.listar()
+                    
+                    this.info = this.listarLivros
+                   
+                },
+                async verMais(id){
+                    let x = await LivrosService.buscarId(id);
+                    this.verMaisInfoLivro = x;
+                    this.dialog = true;
+                }
+            }  
         } 
-    }
 </script>
 <style>
     h3, p{
@@ -177,6 +183,11 @@
     }
     h2{
         font-size:28px;
+    }
+    .cap{
+        width:80%;
+        text-align: center;
+        margin: 2px auto;
     }
     .back-full{
         height: 100%;

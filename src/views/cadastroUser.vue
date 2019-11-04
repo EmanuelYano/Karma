@@ -157,6 +157,7 @@ import LoginService from '../service/LoginService.js'
             this.email = ""
             this.senha = ""
           }
+          console.log(this.alert)
           console.log(this.usuario.serie)
           for(let e=0;e<=100000;e++){
             if (e == 100000){

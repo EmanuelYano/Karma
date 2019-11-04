@@ -1,5 +1,5 @@
 <template>
-    <v-card elevation-10>
+    <v-card class="a" elevation-10>
       <v-navigation-drawer class="thor tor" permanent>
         <v-list>
           <v-list-tile
@@ -23,6 +23,9 @@
 <style>
   .tor{
     width:100% !important;
+  }
+  .a{
+    margin-left: 20%;
   }
 </style>
 <script>
