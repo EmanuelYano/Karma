@@ -5,6 +5,7 @@ import router from './router'
 import './registerServiceWorker'
 import axios from "axios"
 import VueTheMask from 'vue-the-mask'
+import VImageInput from 'vuetify-image-input'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import {faHtml5} from '@fortawesome/free-brands-svg-icons'
@@ -14,8 +15,8 @@ import {faTimes} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {faEdit} from '@fortawesome/free-solid-svg-icons'
 import {faTrashAlt} from '@fortawesome/free-solid-svg-icons'
-
-
+ 
+Vue.component('VImageInput', VImageInput);
 Vue.use(VueTheMask)
 library.add(faUserSecret)
 library.add(faHtml5)

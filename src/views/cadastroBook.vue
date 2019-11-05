@@ -25,16 +25,23 @@
 
                             <v-card-text>
                                 <v-container grid-list-md>
-                                    <v-layout wrap>    
+                                    <v-layout wrap>  
+                                        <!--v-image-input
+                                        v-model="imageData"
+                                        uploadIcon="adicionar imagem"
+                                        fullHeight="true"
+                                        fullWidth="true"
+                                        :image-quality="2"
+                                        clearable
+                                        image-format="jpeg"
+                                    ></v-image-input-->  
                                         <v-flex xs12 sm6 md4>
                                         <v-text-field v-model="livro.nome_livro" label="Nome"></v-text-field>
                                         </v-flex>
                                         <v-flex xs12 sm6 md4>
                                         <v-text-field v-model="livro.subtitulo" label="Subtitulo"></v-text-field>
                                         </v-flex>
-                                        <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livro.sinopse" label="Sinopse"></v-text-field>
-                                        </v-flex>
+                                        
                                         <v-flex xs12 sm6 md4>
                                         <v-text-field v-model="livro.autor" label="Autor"></v-text-field>
                                         </v-flex>
@@ -49,6 +56,10 @@
                                         </v-flex>
                                         <v-flex xs12 sm6 md4>
                                         <v-text-field v-model="livro.categoria" label="Categoria (gênero)"></v-text-field>
+                                        </v-flex>
+                                        <v-flex xs12 sm12 md8>
+                                        <!--v-text-field v-model="livro.sinopse" label="Sinopse"></v-text-field-->
+                                         <v-textarea v-model="livro.sinopse" style="height:30px;" rows="2" label="Sinopse" value="Sinopse"></v-textarea>
                                         </v-flex>
                                     </v-layout>
                                 </v-container>
@@ -92,28 +103,28 @@
                                     <v-layout wrap>
                                         <v-text-field style="display:none" v-model="livroEdit._id"></v-text-field>
                                         <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livroEdit.nome_livro" label="Nome" autofocus aria-required></v-text-field>
+                                            <v-text-field v-model="livroEdit.nome_livro" label="Nome" autofocus aria-required></v-text-field>
                                         </v-flex>
                                         <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livroEdit.subtitulo" label="subtitulo"></v-text-field>
-                                        </v-flex>
+                                            <v-text-field v-model="livroEdit.subtitulo" label="subtitulo"></v-text-field>
+                                        </v-flex>                                                                                
                                         <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livroEdit.sinopse" label="sinopse"></v-text-field>
-                                        </v-flex>                                        
-                                        <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livroEdit.autor" label="autor"></v-text-field>
+                                            <v-text-field v-model="livroEdit.autor" label="autor"></v-text-field>
                                         </v-flex>                                
                                         <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livroEdit.editora" label="editora"></v-text-field>
+                                            <v-text-field v-model="livroEdit.editora" label="editora"></v-text-field>
                                         </v-flex>
                                         <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livroEdit.n_paginas"  label="n_paginas"></v-text-field>
+                                            <v-text-field v-model="livroEdit.n_paginas"  label="n_paginas"></v-text-field>
                                         </v-flex>
                                         <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livroEdit.n_disp"  label="n_disp"></v-text-field>
+                                            <v-text-field v-model="livroEdit.n_disp"  label="n_disp"></v-text-field>
                                         </v-flex>
                                         <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livroEdit.categoria"  label="categoria"></v-text-field>
+                                            <v-text-field v-model="livroEdit.categoria"  label="categoria"></v-text-field>
+                                        </v-flex>
+                                        <v-flex xs12 sm12 md8>                                        
+                                            <v-textarea v-model="livroEdit.sinopse" rows="2" auto-grow style="height:30px;" label="Sinopse" value="Sinopse"></v-textarea>
                                         </v-flex>
                                     </v-layout>
                                 </v-container>

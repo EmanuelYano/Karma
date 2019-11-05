@@ -29,15 +29,15 @@
                     </v-card>
                 </v-flex>
             </v-layout>
-            <!--v-dialog v-model="abrir" hide-overlay persistent width="300">
+            <v-dialog v-model="abrir" hide-overlay persistent width="300">
                 <v-card color="primary" dark>
                     <v-card-text>
-                        Please stand by
+                        Entrando ...
                         <v-progress-linear indeterminate color="white" class="mb-0">
                         </v-progress-linear>
                     </v-card-text>
                 </v-card>
-            </v-dialog-->
+            </v-dialog>
         </v-container>
     </div>
 </template>
@@ -63,17 +63,20 @@ export default {
     },*/
     methods:{
         async entrar(){
+            this.abrir = true
             let usuario = await LoginService.logar(this.usuario)
             console.log()
             if(usuario){
                 this.cor = 'success'
                 this.mensagem = 'Login realizado com sucesso'
                 this.alert = true
+                this.abrir = false
                 //window.location.replace('perfil')
             }else{
                 this.cor = 'error'
                 this.mensagem = 'Erro ao realizar login. Email ou senha inválidos!'
                 this.alert = true
+                this.abrir = false
             }
         }
     }

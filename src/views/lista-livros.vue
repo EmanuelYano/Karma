@@ -28,24 +28,23 @@
                                             style="margin:0 auto">
                                     </v-img>
 
-                                    <v-card-title primary-title class="text-xs-center">
-                                        <div class="text-truncate">
-                                            <h3>
-                                                {{item.subtitulo}}
-                                            </h3>
-                                            <p style="margin-top:3px;" class="text-xs-justify"> 
-                                                {{item.sinopse}} 
-                                            </p>
-                                            <p>
-                                               <h3> {{item.n_disp}} disponíveis </h3> 
-                                            </p>
-                                        </div>
+                                    <v-card-title primary-title class="text-center">                                        
+                                        <h3 class="card-text-items text-truncate" style="margin: auto;">
+                                            {{item.subtitulo}}
+                                        </h3>
+                                        <p style="margin-top:3px;" class="card-text-items text-xs-justify text-truncate"> 
+                                            {{item.sinopse}} 
+                                        </p>
+                                        <p>
+                                            <h3 class="card-text-items text-truncate" style="margin: auto;"> {{item.n_disp}} disponíveis </h3> 
+                                        </p>                                        
                                     </v-card-title>
                                     <div class="text-xs-center">
                                             <v-btn  color="success" round>Reservar</v-btn>
                                             <v-btn  color="info" round @click="verMais(item._id)">Ver mais</v-btn>
-                                    </div>
+                                    </div>        
                                 </v-card>
+                                 
                                 <!-- Ver mais -->  
                                 <v-dialog v-model="dialog" max-width="500px">                               
                                         <v-card min-width=" ">
@@ -118,7 +117,7 @@
         components: {Navbar},
         data(){
             return{
-                dialog: false,
+                dialog: false,imageData:"",
                 info:[
                     /*{titulo_1: "Criando sites com HTML",
                         titulo_2: "Sites de alta qualidade com HTML e CSS",
@@ -159,7 +158,10 @@
             created(){
                 this.initialize()
             },
-            methods:{   
+            methods:{ 
+                teste(){
+                    console.log(this.imageData)
+                }  ,
                 close () {
                     this.dialog = false
                 },
@@ -186,6 +188,11 @@
     }
     .cap{
         width:80%;
+        text-align: center;
+        margin: 2px auto;
+    }
+    .card-text-items h3,p{
+        width:90%;
         text-align: center;
         margin: 2px auto;
     }

@@ -8,7 +8,9 @@ export default class LoginService{
         try {
             let resposta = await axios.post(url + "/logar", usuario)
             console.log(resposta)
+            console.log(resposta.config)
             return resposta.data.usuario
+
             
         } catch (error) {
             console.log (error)
