@@ -50,6 +50,14 @@ export default class LivrosService{
     static async listar(){
         try{
             let resposta = await axios.get(url + "/livros")
+            let vetor = resposta.data.dados
+            let vetorRetorno = new Array()
+            for(let i=0;i<vetor.length;i++){
+                let count = await axios.get(url + "/reserva/livro/" + vetor[i]._id)
+                console.log(count.data)
+                vetor[i].reservas = count.data.reserva
+                vetorRetorno.push(vetor[i])
+            }
             return resposta.data.dados
         }catch (error){
             console.log(error)

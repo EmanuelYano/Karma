@@ -15,8 +15,18 @@ import {faTimes} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {faEdit} from '@fortawesome/free-solid-svg-icons'
 import {faTrashAlt} from '@fortawesome/free-solid-svg-icons'
+import {faUserAlt} from '@fortawesome/free-solid-svg-icons'
+import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons'
+import {faLock}  from '@fortawesome/free-solid-svg-icons'
+import {faUnlock}  from '@fortawesome/free-solid-svg-icons'
+import { VBtn, VIcon, VSlider, VSpacer } from 'vuetify/lib'
+
  
 Vue.component('VImageInput', VImageInput);
+Vue.component('VBtn', VBtn);
+Vue.component('VIcon', VIcon);
+Vue.component('VSlider', VSlider);
+Vue.component('VSpacer', VSpacer);
 Vue.use(VueTheMask)
 library.add(faUserSecret)
 library.add(faHtml5)
@@ -25,6 +35,11 @@ library.add(faCss3Alt)
 library.add(faTimes)
 library.add(faEdit)
 library.add(faTrashAlt)
+library.add(faUserAlt)
+library.add(faSignOutAlt)
+library.add(faLock)
+library.add(faUnlock)
+
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

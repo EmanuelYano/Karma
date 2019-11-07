@@ -67,7 +67,7 @@
                             <td>{{ props.item.nome }}</td>
                             <td class="text-xs-right">{{ props.item.codigo }}</td>
                             <td class="text-xs-right">{{ props.item.email }}</td>
-                            <td class="text-xs-right esconderSenha">{{ props.item.senha }}</td>
+                            <td class="text-xs-right esconderSenha">xxxxxxxx</td>
                             <td class="text-xs-right">{{ props.item.telefone }}</td>
                             <td class="text-xs-right">{{ props.item.serie }}</td>
                             <td class="justify-center layout px-0">

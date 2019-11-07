@@ -25,19 +25,19 @@
 
                             <v-card-text>
                                 <v-container grid-list-md>
-                                    <v-layout wrap>  
-                                        <!--v-image-input
-                                        v-model="imageData"
-                                        uploadIcon="adicionar imagem"
-                                        fullHeight="true"
-                                        fullWidth="true"
-                                        :image-quality="2"
-                                        clearable
-                                        image-format="jpeg"
-                                    ></v-image-input-->  
+                                    <v-layout wrap> 
+                                        <v-flex xs12 > 
+                                            <v-image-input
+                                            v-model="livro.imageData"
+                                            uploadIcon="adicionar imagem"                        
+                                            :image-quality="2"
+                                            clearable
+                                            image-format="jpeg"
+                                            ></v-image-input>  
+                                        </v-flex>
                                         <v-flex xs12 sm6 md4>
                                         <v-text-field v-model="livro.nome_livro" label="Nome"></v-text-field>
-                                        </v-flex>
+                                        </v-flex>                                        
                                         <v-flex xs12 sm6 md4>
                                         <v-text-field v-model="livro.subtitulo" label="Subtitulo"></v-text-field>
                                         </v-flex>
@@ -101,6 +101,15 @@
                             <v-card-text>
                                 <v-container grid-list-md>
                                     <v-layout wrap>
+                                        <v-flex xs12 > 
+                                            <v-image-input
+                                            v-model="livroEdit.imageData"
+                                            uploadIcon="adicionar imagem"                        
+                                            :image-quality="2"
+                                            clearable
+                                            image-format="jpeg"
+                                            ></v-image-input>  
+                                        </v-flex>
                                         <v-text-field style="display:none" v-model="livroEdit._id"></v-text-field>
                                         <v-flex xs12 sm6 md4>
                                             <v-text-field v-model="livroEdit.nome_livro" label="Nome" autofocus aria-required></v-text-field>

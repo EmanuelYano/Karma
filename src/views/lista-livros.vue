@@ -3,24 +3,22 @@
         <div grid-list-sm>
             
                 <v-layout row wrap>
-                    <v-flex xs12 sm12 md2 ml-3 mr-3>
+                    <!--v-flex xs12 sm12 md2 ml-3 mr-3>
                         <v-layout>
                             <v-content>
                                 <Navbar />
                             </v-content>
                         </v-layout>
-                    </v-flex>  
-                
-         
+                    </v-flex-->  
                 
                     <v-flex xs12 md8 class="liv-list">
-                        <v-layout row wrap justify-space-between>
-                            <v-flex xs12 sm6 md4 lg4 m-auto v-for="item in info" :key="item.nome_livro">
+                        <v-layout id="listaLivros" row wrap justify-space-between>
+                            <v-flex class="filtro-livro" xs12 sm6 md4 lg4 m-auto v-for="item in info" :key="item.nome_livro">
                                 <v-card class="sif text-xs-center card-liv-list">
                                     
                                     <h2 class="cap text-truncate">{{item.nome_livro}}</h2>
                                     <v-img                                        
-                                            :src="item.src" 
+                                            :src="item.imageData" 
                                             aspect-ratio=".75" 
                                             class="grey lighten" 
                                             max-width="200" 
@@ -35,19 +33,20 @@
                                         <p style="margin-top:3px;" class="card-text-items text-xs-justify text-truncate"> 
                                             {{item.sinopse}} 
                                         </p>
-                                        <p>
-                                            <h3 class="card-text-items text-truncate" style="margin: auto;"> {{item.n_disp}} disponíveis </h3> 
-                                        </p>                                        
+                                         
+                                        <h3 class="card-text-items text-truncate" style="margin: auto;"> {{item.n_disp-item.reservas}} disponíveis </h3>
+                                            
+                                                                               
                                     </v-card-title>
                                     <div class="text-xs-center">
-                                            <v-btn  color="success" round>Reservar</v-btn>
+                                            <v-btn  color="success" round @click="reservar(item._id)" :disabled="(item.n_disp-item.reservas)<1">Reservar</v-btn>
                                             <v-btn  color="info" round @click="verMais(item._id)">Ver mais</v-btn>
                                     </div>        
                                 </v-card>
                                  
                                 <!-- Ver mais -->  
-                                <v-dialog v-model="dialog" max-width="500px">                               
-                                        <v-card min-width=" ">
+                                <v-dialog v-model="dialog">                               
+                                        <v-card>
                                             <v-card-title>
                                                 <span class="headline"><!--{{ formTitle }}--></span>
                                             </v-card-title>
@@ -57,7 +56,7 @@
                                                         <v-card class="sif modal-livro text-xs-center">
                                                             <h2 class="cap">{{verMaisInfoLivro.nome_livro}}</h2>
                                                             <v-img                                        
-                                                                    :src="item.link" 
+                                                                    :src="verMaisInfoLivro.imageData" 
                                                                     aspect-ratio=".75" 
                                                                     class="grey lighten" 
                                                                     max-width="300" 
@@ -118,46 +117,22 @@
         data(){
             return{
                 dialog: false,imageData:"",
-                info:[
-                    /*{titulo_1: "Criando sites com HTML",
-                        titulo_2: "Sites de alta qualidade com HTML e CSS",
-                        disp: "4",
-                        sinopse:"Construir sites em conformidade com os Padrões Web do W3C, é uma exigência do mercado. Resgatar a finalidade original da linguagem de marcação HTML...",
-                        rota: " ", 
-                        src: require("../assets/img1/livro_3.png"),
-                        sinopse2:"Construir sites em conformidade com os Padrões Web do W3C, mais do que uma opção de desenvolvimento, é uma exigência do mercado. Resgatar a finalidade original da linguagem de marcação HTML, tal como idealizada pelo seu inventor, Tim Berners-Lee é a palavra-chave que norteia o moderno conceito de escrever HTML. Este livro descreve de forma detalhada cada um dos elementos do HTML, dando ênfase a sua finalidade. Um capítulo é dedicado exclusivamente às folhas de estilo em cascata (CSS), que forma uma dupla inseparável com HTML. Para ilustrar a teoria, os assuntos apresentados são complementados com códigos-fonte, exemplos e figuras. O leitor será guiado passo a passo na construção de um site real e funcional, para consulta e consolidação do aprendizado. No site de apoio ao livro, o leitor encontrará os códigos-fonte para download e informações complementares.",
-                        paginas:"432",
-                        autor:"Maurício Samy Silva",
-                        editora:"Novatec"},
-
-                        {titulo_1:"CSS Grid Layout",
-                            titulo_2:"CSS: ferramenta de layout",disp:"2",
-                            sinopse:"A criação de Layout CSS sempre foi uma tarefa trabalhosa, mas agora os profissionais têm uma ferramenta poderosa ao seu alcance, o CSS Grid Layout...",
-                            route:"/",
-                            src: require("../assets/img1/livro_2.jpg"),
-                            sinopse2:"",
-                            paginas:"",
-                            autor:"",
-                            editora:""},
-
-                            {titulo_1:"Engenharia de redes de computadores",
-                                titulo_2:"Evolução da rede mundial de compuatdores",disp:"3",
-                                sinopse:"O livro apresenta as redes de computadores com enfoque para Engenharia e mostra a evolução da rede mundial até a Internet, com base em tecnologia da informação...",
-                                route:"/",
-                                src: require("../assets/img1/livro_1.png"), 
-                                sinopse2:"",
-                                paginas:"",
-                                autor:"",
-                                editora:""},*/
-                ],
+                info:[],
                 listarLivros: {},
                 verMaisInfoLivro: {},
                 headers: [{}]
                 }
             },
+            mounted(){
+                let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
+                console.log(usuario)
+                if(usuario == null || !usuario._id){
+                    this.$router.push('/Login')
+                }
+            },
             created(){
                 this.initialize()
-            },
+            },            
             methods:{ 
                 teste(){
                     console.log(this.imageData)
@@ -175,6 +150,12 @@
                     let x = await LivrosService.buscarId(id);
                     this.verMaisInfoLivro = x;
                     this.dialog = true;
+                },
+                async reservar(id){
+                    let reserva = {}
+                    reserva.livro = id
+                    reserva.usuario = JSON.parse(localStorage.getItem("usuarioLogado"))._id
+                    await LivrosService.reservar(reserva)
                 }
             }  
         } 

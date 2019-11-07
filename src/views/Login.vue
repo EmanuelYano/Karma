@@ -52,28 +52,24 @@ export default {
             cor: "",
             abrir: false
         }
-    },
-   /*watch:{
-        abrir(val) {
-            console.log(val)
-        if (!val) return
-
-        setTimeout(() => (this.abrir  = false), 1000)
-      }
-    },*/
+    },   
     methods:{
         async entrar(){
             this.abrir = true
             let usuario = await LoginService.logar(this.usuario)
-            console.log()
+            console.log(usuario)
             if(usuario){
                 this.cor = 'success'
                 this.mensagem = 'Login realizado com sucesso'
                 this.alert = true
                 this.abrir = false
-                //window.location.replace('perfil')
+                localStorage.setItem("usuarioLogado", JSON.stringify(usuario))
+                           
+                this.$router.push('perfil')
+                location.reload()
             }else{
                 this.cor = 'error'
+                localStorage.setItem("usuarioLogado", null)
                 this.mensagem = 'Erro ao realizar login. Email ou senha inválidos!'
                 this.alert = true
                 this.abrir = false

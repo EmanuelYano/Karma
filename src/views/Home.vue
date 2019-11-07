@@ -12,34 +12,36 @@
     </v-parallax>
     <!--div class="desenvolvendo">
       <v-img aspect-ratio="" :src='src2' />
-    </div--> 
+    </div-->
+    
+     <!--v-parallax :src="src" style="height:280px !important;">
+      <v-layout align-center column justify-center>           
+          <v-layout center-space-between>
+            <v-flex xs10 md5>
+              
+            </v-flex>
+          </v-layout>
+      </v-layout>
+    </v-parallax-->
     <br /><br /><br /><br /><br /><br />
     <br /><br /><br /><br /><br /><br />
     <br /><br /><br /><br /><br /><br />
     <br /><br /><br /><br /><br /><br />
     <br /><br /><br /><br /><br /><br />
     <br /><br /><br /><br /><br /><br />
-    <br /><br /><br /><br /><br /><br />
-    <br /><br /><br /><br /><br /><br />
-    <br /><br /><br /><br /><br /><br />
-    <br /><br /><br /><br /><br /><br />
-    <br /><br /><br /><br /><br /><br />
-    <br /><br /><br /><br /><br /><br />
+    
   </div> 
 </template>
-<style>
-  .v-carousel__controls{
-    background-color:rgba(0,0,0,.3);
-    height: 8%;
-  }
+<style>  
   .v-content{
     padding-bottom: 4px !important;
   }
   .v-parallax{
     height: 715px !important;
+    width:auto !important;
   }
-  .fundo-home{
-    background-image: url('../assets/img2/img_fundo_home.jpg');
+  .hom3{
+    background-color: #f4a460;
     width: 100%;
     height: 100%;
   }
@@ -59,6 +61,9 @@
   }
   .cor{
     color: rgba(0,0,0,.1)
+  }
+  .card-sobre-nos{
+   
   }
 </style>
   
