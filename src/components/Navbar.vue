@@ -124,7 +124,7 @@
     },
     mounted(){
         let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
-        console.log(usuario)        
+        //console.log(usuario)        
         if (usuario == null || !usuario._id){
           this.logado = false
           this.deslogado = true
