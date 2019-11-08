@@ -152,7 +152,7 @@
                     this.dialog = true;
                 },
                 async reservar(id){
-                    alerta("Infelizmente essa função se encontra indisponpivel!")
+                    alert("Infelizmente essa função se encontra indisponpivel!")
                     /*let reserva = {}
                     reserva.livro = id
                     reserva.usuario = JSON.parse(localStorage.getItem("usuarioLogado"))._id
