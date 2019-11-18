@@ -11,6 +11,7 @@ import cadBook from './views/cadastroBook.vue'
 import Agua from './views/agua-html.vue'
 import perfil from './views/perfil-usuario.vue'
 import usuarios from './views/controleUser.vue'
+import RecSenha from './views/recSenha.vue'
 
 Vue.use(Router)
 
@@ -19,12 +20,17 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/Login',
+      path: '/login',
       name: 'Login',
       component: Login
     },
     {
-      path: '/Cadastro',
+      path: '/recuperar-senha',
+      nem: 'Recuperar senha',
+      component: RecSenha
+    },
+    {
+      path: '/cadastro',
       name: 'Cadastro',
       component: Cadastro
     },
@@ -54,7 +60,7 @@ export default new Router({
       component: Livros
     },
     {
-      path: '/Book',
+      path: '/controle-livros',
       name: 'Cadastro de livros',
       component: cadBook
     },

@@ -14,7 +14,7 @@
                     <div>
                       <v-text-field v-model="inputBuscar" label="Pesquisar" @keyup="buscarProjeto" class="ml-5 mt-3" color="black" v-if="mostra"> </v-text-field>
                     </div>
-                    <v-btn  icon @click="mostraInput">
+                    <v-btn v-if="liberaBusca" icon @click="mostraInput">
                       <v-icon>search</v-icon>
                     </v-btn>
                   
@@ -93,6 +93,7 @@
     data () {
       return {
         mostra: false,
+        adm:"0",
         deslogado:true,
         logado: false,
         drawer: false,
@@ -101,16 +102,16 @@
         items: [
           { title: 'Home', icon: 'home', route: '/', mostra:true },  
           { title: 'Livros', icon: 'local_library', route: '/lista-livros', mostra:true },
-          { title: 'Cadastro e controle de livros', icon: 'menu_book', route: '/Book', mostra:false },
-          { title: 'Cadastro e controle dos usuários', icon:'account_box', route:'/controle-usuarios', mostra:false },
-          { title: 'Agua', icon:'pool', route:'/agua', mostra:true}
+          { title: 'Cadastro e controle de livros', icon: 'menu_book', route: '/controle-livros', mostra:false },
+          { title: 'Cadastro e controle dos usuários', icon:'account_box', route:'/controle-usuarios', mostra:false }
+          /*,{ title: 'Agua', icon:'pool', route:'/agua', mostra:true}*/
         ],
         usuario:{}
       }      
     },
     computed:{
       itemsFiltrados(){
-        if(this.logado){
+        if(this.logado && this.adm == "1"){
           return this.items
         }
         var items = new Array()
@@ -119,8 +120,11 @@
             items.push(item)
           }
         });
-        return items
+        if(this.adm == "0"){
+          return items
+        }
       }
+      
     },
     mounted(){
         let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
@@ -132,6 +136,11 @@
           this.logado = true
           this.deslogado = false
         }
+        if(usuario == null){
+          this.adm = "0"
+        }else if (usuario.email == "emanuel@emanuel.com" && usuario.codigo == "761629"){
+          this.adm = "1"
+        }
     },
     watch:{
       '$route'(para,de){ 
@@ -140,14 +149,18 @@
         }else{
           this.liberaBusca = false
         }
+        if(para.path == "/perfil"){
+          location.reload()
+          this.inicializar()
+        }
       }
 
     },
     methods:{
       deslogar(){
         localStorage.setItem("usuarioLogado", null)
-        location.reload()
-        this.$router.push('Login')        
+        this.$router.push('login') 
+        location.reload()       
       },
       mostraInput(){
         this.mostra = !this.mostra

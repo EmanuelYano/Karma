@@ -11,7 +11,7 @@
                         vertical
                     ></v-divider>
                     <v-spacer></v-spacer>
-                    <v-dialog v-model="dialog" max-width="500px">
+                    <v-dialog v-model="dialog" persistent max-width="500px">
                         <template v-slot:activator="{ on }">
                             <v-btn color="info" dark class="mb-2" v-on="on">Adicionar novo usuário</v-btn>
                         </template>
@@ -46,9 +46,17 @@
                                             <v-flex xs12 sm6 md4>
                                             <v-text-field v-model="usuario.telefone" mask="(##) #####-####" placeholder="(XX) xxxx-xxxx" label="Telefone"></v-text-field>
                                             </v-flex>
-                                            <v-flex xs12 sm6 md4>
+                                            <!-- <v-flex xs12 sm6 md4>
                                             <v-text-field v-model="usuario.serie"  label="Série"></v-text-field>
-                                            </v-flex>
+                                            </v-flex> -->
+                                            <v-layout>
+                                                <v-flex xs8 md8>
+                                                    <v-select :items="items" label="Selecione a série" color="black"  v-model="usuario.serie"></v-select>
+                                                </v-flex>  
+                                                <v-flex xs4 md4>
+                                                    <v-text-field color="black" mask="A"  label="Turma" v-model="usuario.turma" ></v-text-field>
+                                                </v-flex>
+                                            </v-layout>
                                         </v-layout>
                                     </v-container>
                                 </v-card-text>
@@ -70,6 +78,7 @@
                             <td class="text-xs-right esconderSenha">xxxxxxxx</td>
                             <td class="text-xs-right">{{ props.item.telefone }}</td>
                             <td class="text-xs-right">{{ props.item.serie }}</td>
+                            <td class="text-xs-right">{{ props.item.turma }}</td>
                             <td class="justify-center layout px-0">
                             <!--v-icon small  class="mr-2" @click="editItem(props.item)"> </v-icon-->
                             <font-awesome-icon small class="mr-3" size="2x" @click="editItem(props.item._id)" icon="edit"/>
@@ -82,7 +91,7 @@
                         </template>
                     </v-data-table>
                 </div>
-                <v-dialog v-model="edit" max-width="500px">
+                <v-dialog v-model="edit" persistent max-width="500px">
                     <v-card>
                         <v-card-title>
                             <span class="headline">Editar usuário</span>
@@ -102,18 +111,26 @@
                                         <!--v-flex xs12 sm6 md4>
                                         <v-text-field v-model="email" label="Confirmar E-mail"></v-text-field>
                                         </v-flex-->
-                                        <v-flex xs12 sm6 md4>
+                                        <v-flex xs12 sm6 md6>
                                         <v-text-field v-model="usuarioEdit.senha" label="Senha" type="password"></v-text-field>
                                         </v-flex>
                                         <!--v-flex xs12 sm6 md4>
                                         <v-text-field v-model="senha" label="Confirmar senha" type="password"></v-text-field>
                                         </v-flex-->
-                                        <v-flex xs12 sm6 md4>
+                                        <v-flex xs12 sm6 md6>
                                         <v-text-field v-model="usuarioEdit.telefone" mask="(##) #####-####" placeholder="(XX) xxxx-xxxx" label="Telefone"></v-text-field>
                                         </v-flex>
-                                        <v-flex xs12 sm6 md4>
+                                        <!-- <v-flex xs12 sm6 md4>
                                         <v-text-field v-model="usuarioEdit.serie"  label="Série"></v-text-field>
-                                        </v-flex>
+                                        </v-flex> -->
+                                        <v-layout>
+                                            <v-flex xs8 md8>
+                                                <v-select :items="items" label="Selecione a série" color="black"  v-model="usuarioEdit.serie"></v-select>
+                                            </v-flex>  
+                                            <v-flex xs4 md4>
+                                                <v-text-field color="black" mask="A"  label="Turma" v-model="usuarioEdit.turma" ></v-text-field>
+                                            </v-flex>
+                                        </v-layout>
                                     </v-layout>
                                 </v-container>
                             </v-card-text>
@@ -184,6 +201,7 @@ import LoginService from '../service/LoginService.js'
     export default {
         data: () => ({
         dialog: false, email:'', senha:'',message:"", cor:"", alerta: false,edit:false,alert:false,deleteVorf:false,alerta:false,
+        items:['1 ano', '2 ano', '3 ano', '1 TI', '2 TI', '3 TI'],
         headers: [
             {
             text: 'Nome do usuário',
@@ -196,6 +214,7 @@ import LoginService from '../service/LoginService.js'
             { text: 'Senha', value:'senha' },
             { text: 'Telefone', value: 'telefone' },
             { text: 'Série', value: 'serie' },
+            { text: 'Turma', value: 'turma' },
             { text: 'Ação', value: 'name', sortable: false },
         ],
         listarUsuarios: [],
@@ -230,6 +249,7 @@ import LoginService from '../service/LoginService.js'
             //editar usuario
             async editItem(id){
                 let b = await LoginService.buscarid(id);
+                // console.log(b)
                 this.usuarioEdit._id = b._id
                 this.usuarioEdit.nome = b.nome;
                 this.usuarioEdit.codigo = b.codigo;
@@ -318,7 +338,7 @@ import LoginService from '../service/LoginService.js'
                     let dupli = await LoginService.verDupli(this.usuario)
                     if (dupli) {
                         this.message = 'Usuário já cadastrado!';
-                        this.cor = 'info';
+                        this.cor = 'warning';
                         this.alerta = true;
                         return 
                     }

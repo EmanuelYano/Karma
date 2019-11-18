@@ -6,19 +6,19 @@ const url = configuration.api
 export default class LoginService{
     static async logar(usuario){
         try {
-            let resposta = await axios.post(url + "/logar", usuario)
-            //console.log(resposta)
-           // console.log(resposta.config.data)
-            //console.log(resposta.config)
+            let resposta = await axios.post(url + "/logar", usuario)            
             return resposta.data.usuario            
         } catch (error) {
             console.log (error)
         }
     }
-    static recSenha(email){
-
-    }
-    
+    // static verCamposLogin(usuario){
+    //     if(usuario.email == "" || usuario.senha == ""){
+    //         return true
+    //     }else{
+    //         return false
+    //     }
+    // }   
     
     
     //sessao de cadastro
@@ -37,7 +37,6 @@ export default class LoginService{
         }
     }
     static verificarCampos(usuario, senha, email){
-        console.log(usuario.senha)
         if( usuario.senha == "" || senha == "" || usuario.email == "" || email == "" || usuario.nome == "" || usuario.codigo == "" || usuario.telefone == "" || usuario.serie == ""){
             return true;
         }
@@ -52,13 +51,7 @@ export default class LoginService{
     }
     static async salvar(usuario){
         try {
-            //let ok = await axios.get(url + "/duplicidade", usuario)
-            //console.log(ok)
-            //if(ok == false){
-                return await axios.post(url + "/usuarios", usuario)
-            //}else{
-                //return true
-            //}    
+            return await axios.post(url + "/usuarios", usuario)
         } catch (error) {
             console.log (error)
         }
@@ -87,12 +80,20 @@ export default class LoginService{
     static async buscarid(_id){
         try {
             let resposta = await axios.get(url + "/usuarios/" + _id)
-            console.log(resposta)
             return resposta.data.dados
         } catch (error) {
             console.log(error)
         }
     } 
+    //buscar usuario por email
+    static async buscarEmail(userEmail){
+        try {
+            let resposta = await axios.post(url + "/email", userEmail)
+            return resposta.data.usuario
+        } catch (error) {
+            console.log(error)
+        }
+    }
     //editar usuario
     static async editar(usu){
         try {

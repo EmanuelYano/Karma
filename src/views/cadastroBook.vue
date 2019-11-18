@@ -11,7 +11,7 @@
                         vertical
                     ></v-divider>
                     <v-spacer></v-spacer>
-                    <v-dialog v-model="dialog" max-width="500px">
+                    <v-dialog v-model="dialog" persistent max-width="500px">
                         <template v-slot:activator="{ on }">
                             <v-btn color="info" dark class="mb-2" v-on="on">Adicionar novo livro</v-btn>
                         </template>
@@ -93,7 +93,7 @@
                         </template>
                     </v-data-table>
                 </div>
-                <v-dialog v-model="edit" max-width="500px">
+                <v-dialog v-model="edit" persistent max-width="500px">
                     <v-card>
                         <v-card-title>
                             <span class="headline">Editar livro</span>

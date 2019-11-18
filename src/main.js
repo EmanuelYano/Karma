@@ -18,7 +18,7 @@ import {faTrashAlt} from '@fortawesome/free-solid-svg-icons'
 import {faUserAlt} from '@fortawesome/free-solid-svg-icons'
 import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons'
 import {faLock}  from '@fortawesome/free-solid-svg-icons'
-import {faUnlock}  from '@fortawesome/free-solid-svg-icons'
+import {faUnlock, faUserEdit}  from '@fortawesome/free-solid-svg-icons'
 import { VBtn, VIcon, VSlider, VSpacer } from 'vuetify/lib'
 
  
@@ -39,6 +39,7 @@ library.add(faUserAlt)
 library.add(faSignOutAlt)
 library.add(faLock)
 library.add(faUnlock)
+library.add(faUserEdit)
 
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)

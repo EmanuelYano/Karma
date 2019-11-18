@@ -39,7 +39,7 @@
                                                                                
                                     </v-card-title>
                                     <div class="text-xs-center">
-                                            <v-btn  color="success" round @click="reservar(item._id)" :disabled="(item.n_disp-item.reservas)<1">Reservar</v-btn>
+                                            <v-btn  color="success" v-if="liberaBtn" round @click="reservar(item._id)" :disabled="(item.n_disp-item.reservas)<1">Reservar</v-btn>
                                             <v-btn  color="info" round @click="verMais(item._id)">Ver mais</v-btn>
                                     </div>        
                                 </v-card>
@@ -72,27 +72,27 @@
                                                                     <p style="margin-top:3px;" class="text-xs-justify"> 
                                                                         {{verMaisInfoLivro.sinopse}} 
                                                                     </p>
-                                                                    <p>
-                                                                    <h3> {{verMaisInfoLivro.n_disp}} disponíveis </h3>
-                                                                    </p>
-                                                                    <p>
-                                                                    <h3> Quantidade de páginas: {{verMaisInfoLivro.n_paginas}}</h3>
-                                                                    </p>
-                                                                    <p>
-                                                                        <h3>Autor: {{verMaisInfoLivro.autor}} </h3>
-                                                                    </p>
-                                                                    <p>
-                                                                    <h3> Editora: {{verMaisInfoLivro.editora}}</h3>
-                                                                    </p>
-                                                                </div>
+                                                                    <div class="text-xs-center">
+                                                                        <p></p>
+                                                                        <div >
+                                                                            <h4 style="display:inline-block; margin-right:5%;">Autor: {{verMaisInfoLivro.autor}} </h4>
+                                                                            <h4 style="display:inline-block; margin-left:5%;"> Editora: {{verMaisInfoLivro.editora}}</h4>
+                                                                        </div>
+                                                                        <div>
+                                                                            <h4> Quantidade de páginas: {{verMaisInfoLivro.n_paginas}} páginas</h4>
+                                                                            <h4> Quantidade de livros disponíveis: {{verMaisInfoLivro.n_disp}} livros </h4>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>                                                                
                                                             </v-card-title>
                                                         </v-card>
                                                     </v-layout>
                                                 </v-container>
                                             </v-card-text>
                                             <v-card-actions>
+                                                <v-btn  color="success" v-if="liberaBtn" round @click="reservar(item._id)" :disabled="(item.n_disp-item.reservas)<1">Reservar</v-btn>
                                                 <v-spacer></v-spacer>
-                                                <v-btn color="blue darken-1" flat round @click="close"><font-awesome-icon icon="times"/> </v-btn>
+                                                <v-btn color="error dark-1" flat round @click="close"><font-awesome-icon icon="times"/> </v-btn>
                                             </v-card-actions>
                                         </v-card>
                                     </v-dialog>                                                           
@@ -116,7 +116,7 @@
         components: {Navbar},
         data(){
             return{
-                dialog: false,imageData:"",
+                dialog: false,imageData:"",liberaBtn:true,
                 info:[],
                 listarLivros: {},
                 verMaisInfoLivro: {},
@@ -124,14 +124,14 @@
                 }
             },
             mounted(){
-                let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
-                console.log(usuario)
+                let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))                
                 if(usuario == null || !usuario._id){
-                    this.$router.push('/Login')
+                    this.liberaBtn = false
+                    //this.$router.push('login')
                 }
             },
             created(){
-                this.initialize()
+                this.inicializar()
             },            
             methods:{ 
                 teste(){
@@ -140,9 +140,8 @@
                 close () {
                     this.dialog = false
                 },
-                async initialize(){
-                    this.listarLivros = await LivrosService.listar()
-                    
+                async inicializar(){
+                    this.listarLivros = await LivrosService.listar()                    
                     this.info = this.listarLivros
                    
                 },
@@ -162,7 +161,7 @@
         } 
 </script>
 <style>
-    h3, p{
+    h3,h4, p{
         color: black;
     }
     h2{

@@ -32,36 +32,50 @@
                         <v-text-field mask="(##) #####-####" color="black" outline label="Número de Telefone" placeholder="(XX) XXXXX-XXXX"  v-model="usuario.telefone"></v-text-field>
                 
                         <!--v-text-field color="black" outline label="Série"></v-text-field-->
-                        <v-select :items="items" label="Selecione a série" color="black" outline v-model="usuario.serie"></v-select>
-                        <the-mask mask="ZZZ" :tokens="hextokens" />
-                        
+                        <v-layout>
+                          <v-flex xs8 md8>
+                            <v-select :items="items" label="Selecione a série" color="black" outline v-model="usuario.serie"></v-select>
+                          </v-flex>  
+                          <v-flex xs4 md4>
+                          <v-text-field color="black" mask="A" outline label="Turma" v-model="usuario.turma" ></v-text-field>
+                          </v-flex>
+                        </v-layout>
                       </v-flex>
                     </v-layout>
-                    </v-container>
-                    
-                      <v-layout justify-center>
-                        <v-flex sm5 md5 lg5>       
+                    <v-layout justify-center>
+                        <v-flex xs12 md4 lg4>       
                           <v-btn block class="conf" color="rgba(211,160,95,.9)" @click="salvar">Confirmar</v-btn> 
                         </v-flex>
-                        <v-flex sm5 md5 lg5>
-                          <v-btn block class="canc" color="rgba(211,160,95,.9)" @click="cancel">Cancelar</v-btn>
+                        <v-flex xs12 md4 lg4>
+                          <v-btn block class="limpa" color="rgba(211,160,95,.9)" @click="limpaCampos">Limpar campos</v-btn>
                         </v-flex>
-                        
+                        <v-flex xs12 md4 lg4>
+                          <v-btn block class="canc" color="rgba(211,160,95,.9)" @click="cancel">Cancelar</v-btn>
+                        </v-flex>                        
                       </v-layout>
+                    </v-container>
+                    
+                      
                     
                   </v-card-text>  
                 </v-card>
               </v-flex>
           </v-layout>
-          <v-dialog v-model="abrir" hide-overlay persistent width="300">
-                <v-card color="primary" dark>
-                    <v-card-text>
-                        Aguarde! Cadastro em andamento...
-                        <v-progress-linear indeterminate color="white" class="mb-0">
-                        </v-progress-linear>
-                    </v-card-text>
-                </v-card>
-            </v-dialog>
+          <v-dialog v-model="abrirProgress" hide-overlay persistent width="300">
+              <v-card :color="cor" dark>
+                  <v-card-text>
+                      {{message}}
+                      <v-progress-linear indeterminate color="white" class="mb-0">
+                      </v-progress-linear>            
+                  </v-card-text>
+              </v-card>
+          </v-dialog>          
+          <v-snackbar v-model="abrir" top multi-line :timeout=4000 :color="cor">
+            {{ message }}
+            <v-btn dark flat @click="alerta = false">
+                Fechar
+            </v-btn>
+          </v-snackbar>
       </v-container>
     </div>
 </template>
@@ -88,14 +102,9 @@ import LoginService from '../service/LoginService.js'
       data () {
         return {
           abrir: false,
-          vorf: false,
+          abrirProgress: false,
+          vorf: false,          
           colorEmail:'black',
-          hextokens:{
-            Z:{
-              pattern: /[a-z,A-Z]/,
-              transform: v => v.toLocaleUpperCase()
-            }
-          },
           usuario: {},
           usuarios:[],
           message:"", 
@@ -106,10 +115,13 @@ import LoginService from '../service/LoginService.js'
         }
       },
       methods:{
-        cancel(){
+        limpaCampos(){
           this.usuario = {}
           this.email = ""
-          this.senha = ""     
+          this.senha = ""
+        },
+        cancel(){
+          this.$router.push('/')     
         },
         async salvar() {
           let x = LoginService.compararSenha(this.usuario.senha,this.senha);
@@ -118,57 +130,58 @@ import LoginService from '../service/LoginService.js'
           if (z == true){
             this.message = 'Por favor! Preencha todos os campos';
             this.cor = 'error';
-            this.alert = true;
+            this.abrir = true;
             return
           }
           if (y == false && x == false){
             this.message = 'E-mails e senhas diferentes';
             this.cor = 'error';
-            this.alert = true;
+            this.abrir = true;
             return
           }
           if (y == false){
             this.message = 'E-mails diferentes';
             this.cor = 'error';
-            this.alert = true; 
+            this.abrir = true; 
             return
           }
           if (x == false){
             this.message = 'Senhas diferentes';
             this.cor = 'error';
-            this.alert = true;
+            this.abrir = true;
             return 
           } 
           let dupli = await LoginService.verDupli(this.usuario)
           if (dupli) {
             this.message = 'Usuário já cadastrado!';
-            this.cor = 'info';
-            this.alert = true;
+            this.cor = 'warning';
+            this.abrir = true;
             return 
           }
-          this.abrir = true
+          this.cor = "cyan"
+          this.abrirProgress = true
+          this.message = "Aguarde... Efetuando cadastro!"        
           let cadSucesso = await LoginService.salvar(this.usuario)
-          if(cadSucesso){
-            this.abrir = false
-            this.message = 'Cadastro efetuado com sucesso'
-            this.cor = 'success'
-            this.alert = true
-            this.usuario = {}
-            this.email = ""
-            this.senha = ""
-          }
-          console.log(this.alert)
-          console.log(this.usuario.serie)
-          for(let e=0;e<=100000;e++){
-            if (e == 100000){
-              this.alert = false
+          try{ 
+            if(cadSucesso){
+              try{                
+                this.message = 'Cadastro efetuado com sucesso. Você será redirecionado a área de login em 3 segundos'
+                this.cor = 'success'                 
+              }catch(err){
+                console.log(err)
+              }finally{
+                setTimeout(() => (this.$router.push('login')), 3000)                
+              }
             }
-          }   
+          }catch(err){
+            console.log(err)
+          }            
         }
-      }, 
-      async mounted(){
-        this.usuarios = await LoginService.listar()
-        console.log(this.usuarios.email)
       }
+      // , 
+      // async mounted(){
+      //   this.usuarios = await LoginService.listar()
+      //   console.log(this.usuarios.email)
+      // }
     }
 </script>
