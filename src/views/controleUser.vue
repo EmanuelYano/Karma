@@ -81,9 +81,9 @@
                             <td class="text-xs-right">{{ props.item.turma }}</td>
                             <td class="justify-center layout px-0">
                             <!--v-icon small  class="mr-2" @click="editItem(props.item)"> </v-icon-->
-                            <font-awesome-icon small class="mr-3" size="2x" @click="editItem(props.item._id)" icon="edit"/>
+                            <font-awesome-icon small class="mr-3 mt-2" size="2x" style="cursor:pointer" alt="Editar" title="Editar" @click="editItem(props.item._id)" icon="edit"/>
                             <!--v-icon small @click="deleteItem(props.item)"> </v-icon-->
-                            <font-awesome-icon small class="mr-2" size="2x" @click="deleteItem(props.item)" icon="trash-alt"/>
+                            <font-awesome-icon small class="mr-2 mt-2" size="2x" style="cursor:pointer" alt="Deletar" title="Deletar" @click="deleteItem(props.item)" icon="trash-alt"/>
                             </td>
                         </template>
                         <template v-slot:no-data>
@@ -218,7 +218,7 @@ import LoginService from '../service/LoginService.js'
             { text: 'Ação', value: 'name', sortable: false },
         ],
         listarUsuarios: [],
-        
+        adm: {},
         usuario: {},
         usuarioEdit: {},
         itemASerDeletado: {}
@@ -228,6 +228,12 @@ import LoginService from '../service/LoginService.js'
                 val || this.cancelar()
                 val || this.salvar()
             },
+        },
+        mounted(){
+                let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))                
+                if(usuario == null || !usuario._id){
+                    this.$router.push('login')
+                }
         },
         created () {
                 this.initialize()
@@ -257,6 +263,7 @@ import LoginService from '../service/LoginService.js'
                 this.usuarioEdit.senha = b.senha;
                 this.usuarioEdit.telefone = b.telefone;
                 this.usuarioEdit.serie = b.serie;
+                this.usuarioEdit.turma = b.turma;
                 if(b){
                     this.edit = true
                 }

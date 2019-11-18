@@ -1,9 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Login from './views/Login.vue'
-import T from './views/tarefamarc.vue'
-import cremedemilho from './views/cremedemilho.vue'
-import cremedealho from './views/cremedealho.vue'
 import Cadastro from './views/cadastroUser.vue'
 import Home from './views/Home.vue'
 import Livros from './views/lista-livros.vue'
@@ -33,21 +30,6 @@ export default new Router({
       path: '/cadastro',
       name: 'Cadastro',
       component: Cadastro
-    },
-    {
-      path: '/T',
-      name: 'T',
-      component: T
-    },
-    {
-      path: '/cremedemilho',
-      name: 'cremedemilho',
-      component: cremedemilho
-    },
-    {
-      path: '/cremedealho',
-      name: 'cremedealho',
-      component: cremedealho
     },
     {
       path: '/',

@@ -6,9 +6,9 @@
         <Navbar />
       <router-view/>   
     </v-content>
-    <!--v-content class="pt-0">
+    <v-content class="pt-0">
       <Footer />
-    </v-content-->
+    </v-content>
   </v-app>  
   
 </template>

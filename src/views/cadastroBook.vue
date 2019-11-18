@@ -10,6 +10,11 @@
                         inset
                         vertical
                     ></v-divider>
+                   <!--  <v-flex xs4>
+                        <v-flex>
+                            <v-text-field v-model="inputBuscar" append-icon="search" @keyup="buscarLivro" placeholder="Pesquisar" class="ml-5 mt-3" color="black" ></v-text-field>
+                        </v-flex>                        
+                    </v-flex> -->
                     <v-spacer></v-spacer>
                     <v-dialog v-model="dialog" persistent max-width="500px">
                         <template v-slot:activator="{ on }">
@@ -26,7 +31,7 @@
                             <v-card-text>
                                 <v-container grid-list-md>
                                     <v-layout wrap> 
-                                        <v-flex xs12 > 
+                                        <v-flex xs12 sm12 md7> 
                                             <v-image-input
                                             v-model="livro.imageData"
                                             uploadIcon="adicionar imagem"                        
@@ -35,31 +40,39 @@
                                             image-format="jpeg"
                                             ></v-image-input>  
                                         </v-flex>
-                                        <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livro.nome_livro" label="Nome"></v-text-field>
+                                        <v-flex style="margin-top:-1%;">
+                                            <v-flex xs12 sm6 md12>
+                                                <v-text-field v-model="livro.nome_livro" color="black" label="Nome"></v-text-field>
+                                                <v-text-field v-model="livro.subtitulo" color="black" label="Subtitulo"></v-text-field>
+                                            </v-flex>
+                                            <v-flex xs12 sm6 md12>
+                                                <v-text-field v-model="livro.autor" color="black" label="Autor"></v-text-field>
+                                                <v-text-field v-model="livro.editora" color="black" label="Editora"></v-text-field>
+                                            </v-flex>    
                                         </v-flex>                                        
-                                        <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livro.subtitulo" label="Subtitulo"></v-text-field>
+                                        <!-- <v-flex xs12 sm6 md4>
+                                            <v-text-field v-model="livro.subtitulo" label="Subtitulo"></v-text-field>
                                         </v-flex>
                                         
                                         <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livro.autor" label="Autor"></v-text-field>
+                                            <v-text-field v-model="livro.autor" label="Autor"></v-text-field>
                                         </v-flex>
                                         <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livro.editora" label="Editora"></v-text-field>
+                                            <v-text-field v-model="livro.editora" label="Editora"></v-text-field>
+                                        </v-flex> -->
+                                        <v-flex xs6 sm4>
+                                            <v-text-field v-model="livro.n_paginas" color="black" type="number" label="Quantidade de páginas"></v-text-field>
+                                        </v-flex>
+                                        <v-flex xs6 sm4>
+                                            <v-text-field v-model="livro.n_disp" color="black" type="number" label="Quantidade disponível"></v-text-field>
                                         </v-flex>
                                         <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livro.n_paginas" type="number" label="Quantidade de páginas"></v-text-field>
-                                        </v-flex>
-                                        <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livro.n_disp" type="number" label="Quantidade disnponível"></v-text-field>
-                                        </v-flex>
-                                        <v-flex xs12 sm6 md4>
-                                        <v-text-field v-model="livro.categoria" label="Categoria (gênero)"></v-text-field>
+                                            <v-text-field v-model="livro.categoria" color="black" label="Categoria (gênero)"></v-text-field>
+                                            <!-- <v-select :items="itemsSelect" color="black" :disabled="this.itemsSelect == ''" label="Selecione o gênero"></v-select> -->
                                         </v-flex>
                                         <v-flex xs12 sm12 md8>
                                         <!--v-text-field v-model="livro.sinopse" label="Sinopse"></v-text-field-->
-                                         <v-textarea v-model="livro.sinopse" style="height:30px;" rows="2" label="Sinopse" value="Sinopse"></v-textarea>
+                                            <v-textarea v-model="livro.sinopse" color="black" name="input-7-1" rows="4" label="Sinopse" value="Sinopse"></v-textarea>
                                         </v-flex>
                                     </v-layout>
                                 </v-container>
@@ -67,26 +80,30 @@
 
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn color="blue darken-1" flat @click="cancelar()">Cancelar</v-btn>
+                                <v-btn color="error darken-1" flat @click="cancelar()">Cancelar</v-btn>
                                 <v-btn color="blue darken-1" flat @click="salvar()">Salvar</v-btn>
                             </v-card-actions>
                         </v-card>
                     </v-dialog>
                     </v-toolbar>
-                    <v-data-table :headers="headers" :items="listaLivros" class="elevation-1">
-                        <template v-slot:items="props">
-                            <td style="display:none">{{ props.item._id }}</td>
-                            <td>{{ props.item.nome_livro }}</td>
-                            <td class="text-xs-right">{{ props.item.autor }}</td>
-                            <td class="text-xs-right">{{ props.item.editora }}</td>
-                            <td class="text-xs-right">{{ props.item.n_paginas }}</td>
-                            <td class="text-xs-right">{{ props.item.n_disp }}</td>
-                            <td class="justify-center layout px-0">
-                            <!--v-icon small  class="mr-2" @click="editItem(props.item)"> </v-icon-->
-                            <font-awesome-icon small class="mr-3" size="2x" @click="editItem(props.item._id)" icon="edit"/>
-                            <!--v-icon small @click="deleteItem(props.item)"> </v-icon-->
-                            <font-awesome-icon small class="mr-2" size="2x" @click="deleteItem(props.item)" icon="trash-alt"/>
-                            </td>
+                    <v-data-table :headers="headers" :items="listaLivros" class="elevation-1" id="livros">
+                        <template v-slot:items="props" class="filtro-livro">
+                            
+                                <td style="display:none">{{ props.item._id }}</td>
+                                <td>{{ props.item.nome_livro }}</td>
+                                <td class="text-xs-right" >{{ props.item.autor }}</td>
+                                <td class="text-xs-right">{{ props.item.editora }}</td>
+                                <td class="text-xs-right">{{ props.item.n_paginas }}</td>
+                                <td class="text-xs-right">{{ props.item.n_disp }}</td>
+                                <td class="text-xs-right">{{ props.item.n_disp - props.item.reservas }}</td>
+                                <td class="text-xs-right">{{ props.item.categoria }}</td>
+                                <td class="justify-center layout px-0">
+                                <!--v-icon small  class="mr-2" @click="editItem(props.item)"> </v-icon-->
+                                <font-awesome-icon small class="mr-3 mt-2" size="2x" style="cursor:pointer" alt="Editar" title="Editar" @click="editItem(props.item._id)" icon="edit"/>
+                                <!--v-icon small @click="deleteItem(props.item)"> </v-icon-->
+                                <font-awesome-icon small class="mr-2 mt-2" size="2x" style="cursor:pointer" alt="Deletar" title="Deletar" @click="deleteItem(props.item)" icon="trash-alt"/>
+                                </td>
+
                         </template>
                         <template v-slot:no-data>
                             <v-btn color="info" @click="initialize">Atualizar</v-btn>
@@ -101,7 +118,7 @@
                             <v-card-text>
                                 <v-container grid-list-md>
                                     <v-layout wrap>
-                                        <v-flex xs12 > 
+                                        <v-flex xs7> 
                                             <v-image-input
                                             v-model="livroEdit.imageData"
                                             uploadIcon="adicionar imagem"                        
@@ -110,8 +127,18 @@
                                             image-format="jpeg"
                                             ></v-image-input>  
                                         </v-flex>
-                                        <v-text-field style="display:none" v-model="livroEdit._id"></v-text-field>
-                                        <v-flex xs12 sm6 md4>
+                                        <v-flex style="margin-top:-1%;">
+                                            <v-flex xs12 sm6 md12>
+                                                <v-text-field v-model="livroEdit.nome_livro" color="black" label="Nome"></v-text-field>
+                                                <v-text-field v-model="livroEdit.subtitulo" color="black" label="Subtitulo"></v-text-field>
+                                            </v-flex>
+                                            <v-flex xs12 sm6 md12>
+                                                <v-text-field v-model="livroEdit.autor" color="black" label="Autor"></v-text-field>
+                                                <v-text-field v-model="livroEdit.editora" color="black" label="Editora"></v-text-field>
+                                            </v-flex>    
+                                        </v-flex> 
+                                        <!-- <v-text-field style="display:none" v-model="livroEdit._id"></v-text-field> -->
+                                        <!-- <v-flex xs12 sm6 md4>
                                             <v-text-field v-model="livroEdit.nome_livro" label="Nome" autofocus aria-required></v-text-field>
                                         </v-flex>
                                         <v-flex xs12 sm6 md4>
@@ -122,18 +149,19 @@
                                         </v-flex>                                
                                         <v-flex xs12 sm6 md4>
                                             <v-text-field v-model="livroEdit.editora" label="editora"></v-text-field>
+                                        </v-flex> -->
+                                        <v-flex xs6 sm6 md4>
+                                            <v-text-field v-model="livroEdit.n_paginas" color="black" label="Quantidade de páginas"></v-text-field>
+                                        </v-flex>
+                                        <v-flex xs6 sm6 md4>
+                                            <v-text-field v-model="livroEdit.n_disp" color="black" label="Quantidade disponível"></v-text-field>
                                         </v-flex>
                                         <v-flex xs12 sm6 md4>
-                                            <v-text-field v-model="livroEdit.n_paginas"  label="n_paginas"></v-text-field>
-                                        </v-flex>
-                                        <v-flex xs12 sm6 md4>
-                                            <v-text-field v-model="livroEdit.n_disp"  label="n_disp"></v-text-field>
-                                        </v-flex>
-                                        <v-flex xs12 sm6 md4>
-                                            <v-text-field v-model="livroEdit.categoria"  label="categoria"></v-text-field>
+                                            <v-text-field v-model="livroEdit.categoria" color="black" label="Categoria (gênero)"></v-text-field>
+                                            <!-- <v-select :items="itemsSelect" color="black" :disabled="true" label="Selecione o gênero"></v-select> -->
                                         </v-flex>
                                         <v-flex xs12 sm12 md8>                                        
-                                            <v-textarea v-model="livroEdit.sinopse" rows="2" auto-grow style="height:30px;" label="Sinopse" value="Sinopse"></v-textarea>
+                                            <v-textarea v-model="livroEdit.sinopse" color="black" name="input-7-1" label="Sinopse" value="Sinopse"></v-textarea>
                                         </v-flex>
                                     </v-layout>
                                 </v-container>
@@ -141,7 +169,7 @@
 
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn color="blue darken-1" flat @click="cancelar()" >Cancelar</v-btn>
+                                <v-btn color="error darken-1" flat @click="cancelar()" >Cancelar</v-btn>
                                 <v-btn color="blue darken-1" flat @click="salvarEdit(livroEdit._id)">Salvar</v-btn>
                             </v-card-actions>
                     </v-card>
@@ -178,17 +206,22 @@
     </v-container>
 </template>
 <style scoped>
-    >>> .v-label--active{
+    /*>>> .v-label--active{
         transform: translateY(-27px) translateX(-8px) scale(0.75) !important;
         background: rgb(238, 208, 130);
         padding: 0px 10px;
+    }*/
+    >>> .v-input__slot{
+        height: 35px !important;
     }
 </style>
 <script>
 import LivrosService from '../service/LivrosService.js'
     export default {
         data: () => ({
-        dialog: false, message:"",cor:"",alert:false,abrir:false,alerta:false,edit:false,deleteVorf:false,deletar: false,
+        dialog: false, message:"",cor:"",alert:false,abrir:false,alerta:false,edit:false,deleteVorf:false,deletar: false,inputBuscar:"",
+        categoria:{},
+        itemsSelect:['Romance',],
         headers: [
             {
             text: 'Nome do livro',
@@ -199,7 +232,9 @@ import LivrosService from '../service/LivrosService.js'
             { text: 'Autor', value: 'autor' },
             { text: 'Editora', value: 'editora' },
             { text: 'Nº páginas', value: 'n_paginas' },
-            { text: 'Nº disponível', value: 'n_disp' },
+            { text: 'Total de livros', value: 'n_disp' },
+            { text: 'Total disponível', value: 'reservados' },
+            { text: 'Categoria', value: 'categoria' },
             { text: 'Ação', value: 'name', sortable: false }
         ],
         listaLivros: [],
@@ -213,13 +248,21 @@ import LivrosService from '../service/LivrosService.js'
                 val || this.salvar();
             },            
         },
+        mounted(){
+                let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))                
+                if(usuario == null || !usuario._id){
+                    this.$router.push('login')
+                }
+        },
         created () {
-                this.initialize();
-            },
+            this.initialize();
+        },
         methods: {
             async initialize () {
                 this.listaLivros = await LivrosService.listar();
-                
+                // for(let i=0;i<this.listaLivros.length;i++){
+                //     this.itemsSelect[i] = this.listaLivros[i].categoria   
+                // }               
             },
             cancelar() {
                 this.dialog = false;
@@ -255,7 +298,8 @@ import LivrosService from '../service/LivrosService.js'
             //editar item
             async editItem(id){
                 let info = await LivrosService.buscarId(id)
-                this.livroEdit._id = info._id; 
+                this.livroEdit._id = info._id;
+                this.livroEdit.imageData = info.imageData;
                 this.livroEdit.nome_livro = info.nome_livro;
                 this.livroEdit.subtitulo = info.subtitulo;
                 this.livroEdit.sinopse = info.sinopse;
@@ -313,6 +357,22 @@ import LivrosService from '../service/LivrosService.js'
                 this.message = "Você deseja realmente excluir " + this.itemASerDeletado.nome_livro + " ?";
                 this.deleteVorf = true;
                 this.cor = 'info';
+            },
+            buscarLivro() {
+                var filter, listaLivros, td, i, txtValuetd, livros, corpoLivro;
+                filter = this.inputBuscar.toString().toUpperCase();
+                listaLivros = document.getElementById("livros");
+                livros = listaLivros.getElementsByClassName("filtro-livro");
+                for (i = 0; i < livros.length; i++) {
+                    td = livros[i].getElementsByTagName("td")[0];           
+                    txtValuetd =  td.textContent ||  td.innerText;
+                    if ( txtValueHtd.toUpperCase().indexOf(filter) > -1 ) {
+                        livros[i].style.display = "";
+                    } else {
+                        livros[i].style.display = "none";
+                    }
+                }
+                
             }            
         }   
     }

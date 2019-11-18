@@ -157,6 +157,12 @@
             
         }
         },
+        mounted(){
+                let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))                
+                if(usuario == null || !usuario._id){
+                    this.$router.push('login')
+                }
+        },
         created(){            
             this.inicializar()
             //location.reload()            

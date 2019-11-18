@@ -9,7 +9,7 @@ export default class LivrosService{
         if( livro.nome_livro == null || livro.subtitulo == null || livro.sinopse == null || livro.autor == null || livro.editora == null || livro.n_paginas == null || livro.n_disp == null || livro.categoria == null){
             return true;
         }
-        console.log("fudeu")
+        // console.log("fudeu")
     }
     //salvar livro
     static async salvar(livro){
@@ -54,7 +54,7 @@ export default class LivrosService{
             let vetorRetorno = new Array()
             for(let i=0;i<vetor.length;i++){
                 let count = await axios.get(url + "/reserva/livro/" + vetor[i]._id)
-                console.log(count.data)
+                // console.log(count.data)
                 vetor[i].reservas = count.data.reserva
                 vetorRetorno.push(vetor[i])
             }
