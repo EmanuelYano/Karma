@@ -2,13 +2,12 @@
 
   <v-app>
     
-    <v-content >
+    <v-content pt-0>
         <Navbar />
-      <router-view/>   
     </v-content>
-    <v-content class="pt-0">
-      <Footer />
-    </v-content>
+    <router-view/>       
+    <Footer />
+    
   </v-app>  
   
 </template>

@@ -1,15 +1,16 @@
 <template>
   <div class="hom3">
-    <!--div class="fundo-home">
+    <div class="fundo-home">
       <v-img aspect-ratio="" :src='src' />
-    </div-->  
-       
-    <v-parallax :src="src">
-      <v-layout align-center column justify-center>    
-          <h1 class="display-2 font-weight-thin mb-3"></h1>
-          <h4 class="subheading"></h4>
-      </v-layout>
-    </v-parallax>
+    </div>  
+    <!-- <v-flex xs12>   
+      <v-parallax :src="src">
+        <v-layout align-center column justify-center>    
+            <h1 class="display-2 font-weight-thin mb-3"></h1>
+            <h4 class="subheading"></h4>
+        </v-layout>
+      </v-parallax>
+    </v-flex> -->
     <!--div class="desenvolvendo">
       <v-img aspect-ratio="" :src='src2' />
     </div-->
@@ -25,10 +26,7 @@
     </v-parallax-->
     <br /><br /><br /><br /><br /><br />
     <br /><br /><br /><br /><br /><br />
-    <br /><br /><br /><br /><br /><br />
-    <br /><br /><br /><br /><br /><br />
-    <br /><br /><br /><br /><br /><br />
-    <br /><br /><br /><br /><br /><br />
+    
     
   </div> 
 </template>
