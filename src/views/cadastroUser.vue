@@ -22,8 +22,8 @@
                         <v-text-field color="black" outline label="Nome" autofocus v-model="usuario.nome"></v-text-field>
                 
                         <v-text-field mask="########" color="black" outline label="Código do Aluno"  v-model="usuario.codigo"></v-text-field>
-                        <v-text-field :color="colorEmail" outline label="E-mail"  v-model="usuario.email"></v-text-field>
-                        <v-text-field :color="colorEmail" outline label="Confirmar e-mail"  v-model="email"></v-text-field>
+                        <v-text-field :color="colorEmail" outline label="E-mail" type="email" v-model="usuario.email"></v-text-field>
+                        <v-text-field :color="colorEmail" outline label="Confirmar e-mail" type="email"  v-model="email"></v-text-field>
                         
                       </v-flex>
                       <v-flex xs12 sm6>

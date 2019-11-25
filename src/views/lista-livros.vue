@@ -14,7 +14,7 @@
                 <v-flex xs12 md11 class="liv-list">
                     <v-layout id="listaLivros" row wrap justify-space-between>
                         <v-flex class="filtro-livro" xs11 sm6 md4 m-auto v-for="item in info" :key="item.nome_livro">
-                            <v-card class="sif text-xs-center card-liv-list" max-width="550px" style="margin-left:2%">
+                            <v-card class="sif text-xs-center card-liv-list" max-width="90%" style="margin-left:2%">
                                 
                                 <h2 class="cap text-truncate">{{item.nome_livro}}</h2>
                                 <v-img                                        

@@ -2,7 +2,7 @@
 
   <v-app>
     
-    <v-content pt-0>
+    <v-content pt-0 style="padding-top: 40px !important;">
         <Navbar />
     </v-content>
     <router-view/>       

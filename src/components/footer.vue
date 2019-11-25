@@ -1,27 +1,15 @@
 <template>
-  <v-footer
-    dark
-    height="auto" style="width:100%; position: relative;
-bottom: 0;">
-    <v-layout>
-        
-      <v-card
-        flat
-        tile
-        class="sif lighten-1 black--text text-xs-center">
-        
-       
-        <v-flex>
-            
-            <v-layout align-center justify-start row fill-height>
-               
+  <v-footer dark height="auto" style="width:100%; position:relative; bottom: 0;" app>
+    <v-layout>        
+      <v-card flat tile class="sif lighten-1 black--text text-xs-center elevation-20">
+        <v-flex>            
+            <v-layout align-center justify-start row fill-height>               
                     <v-card-text class="info-escola black--text pt-0">
                         <br />Escola Estadual Waldemir Barros da Silva.
                         Rua Palmácia, S/N, Moreninhas. <br/> 
                         Email para contato: eewbs@sed.ms.gov.br<br />
                         Telefone: 3314-9014 
-                    </v-card-text>
-                
+                    </v-card-text>                
             </v-layout>
         </v-flex>
         <v-divider class="ml-0"></v-divider>
