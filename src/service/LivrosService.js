@@ -6,7 +6,7 @@ const url = configuration.api
 export default class LivrosService{
     //verificar campos
     static verificarCampos(livro){
-        if( livro.nome_livro == null || livro.subtitulo == null || livro.sinopse == null || livro.autor == null || livro.editora == null || livro.n_paginas == null || livro.n_disp == null || livro.categoria == null){
+        if( livro.nome_livro == null || livro.subtitulo == null || livro.sinopse == null || livro.autor == null || livro.editora == null || livro.n_paginas == null || livro.n_disp == null || livro.categoria == null || livro.imageData == null){
             return true;
         }
         // console.log("fudeu")
@@ -61,6 +61,26 @@ export default class LivrosService{
             return resposta.data.dados
         }catch (error){
             console.log(error)
+        }
+    }
+
+    //reservar livro
+    static async reservar(reserva){        
+        try{
+            let resposta = await axios.post(url + "/reserva", reserva)
+            return resposta
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    //buscar reserva
+    static async buscaReserva(id){
+        try{
+            let resposta = await axios.get(url + "/reserva/usuario/" + id)
+            return resposta.data
+        }catch(err){
+            console.log(err)
         }
     }
 

@@ -23,7 +23,7 @@
                                         <v-layout wrap>
                                             <v-flex xs12 md4>
                                                 <v-text-field
-                                                    outline v-model="aa" color="black" label="Status da reserva:" disabled/>
+                                                    outline color="black" label="Status da reserva" disabled  v-model="usuarioUp.reserva" />
                                             </v-flex>
                                             <v-flex xs12 md4>
                                                 <v-text-field
@@ -39,10 +39,10 @@
                                             </v-flex>
                                             <v-flex xs12 md6>
                                                 <v-layout>
-                                                    <v-flex xs11 md11 >
+                                                    <v-flex xs11 md10 lg11 >
                                                         <v-text-field outline label="Senha" color="black" class="purple-input"  type="password" :disabled="travaSeg" v-model="usuarioUp.senha"/>
                                                     </v-flex>
-                                                    <v-flex xs1 md1 p-0 style="margin-top: 2%;margin-left: -3%;">
+                                                    <v-flex xs1 md1 lg1 p-0 style="margin-top: 2%;margin-left: -3%;">
                                                         <v-btn v-if="destravar" flat fab  @click="verificarSenha"><font-awesome-icon icon="unlock" size="1x"/></v-btn>
                                                         <v-btn v-if="travar" flat fab  @click="travaSenha"><font-awesome-icon icon="lock" size="1x" /></v-btn>
                                                     </v-flex> 
@@ -56,7 +56,7 @@
                                                 <v-text-field
                                                     outline label="Telefone" color="black" mask="(##) #####-####" class="purple-input" v-model="usuarioUp.telefone" />
                                             </v-flex>
-                                            <v-flex xs6 md2>
+                                            <v-flex xs6 md2 pr-0 >
                                                 <v-select outline :items="items" label="Série" color="black" class="purple-input" v-model="usuarioUp.serie"> </v-select>
                                             </v-flex>
                                             <v-flex xs6 md2>
@@ -136,6 +136,18 @@
                     </v-card-text>
                 </v-card>
             </v-dialog>
+        <!-- Gambiarra kappa kappa -->
+            <v-dialog v-model="gamb" persistent widht="300">
+                <v-card>
+                    <v-card-title>
+                        <p class="text-xs-center" style="margin:auto;">Bem vindo ao seu perfil! Se caso ocorrer algum problema, solicite ao bibliotecário uma averiguação!</p>
+                    </v-card-title>
+                    <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn color="green darken-1" flat @click="gamb = false">Confirmar</v-btn>
+                    </v-card-actions>
+                </v-card>
+            </v-dialog>
       </v-container>
     </div>
 </template>
@@ -151,11 +163,12 @@
 </style>
 <script>
     import LoginService from '../service/LoginService.js'
+    import LivrosService from '../service/LivrosService.js'
     export default {
         data () {
         return {
-            senhaVer:"",upUsu:false,imageUp:false,abrir:false,vorf: false,destravar: true, travar: false, travaSeg: true,aa:"", usuarioUp:{}
-            ,items:['1 ano', '2 ano', '3 ano', '1 TI', '2 TI', '3 TI']
+            senhaVer:"",upUsu:false,imageUp:false,abrir:false,vorf: false,destravar: true, travar: false, travaSeg: true,aa:"",gamb:true,usuarioUp:{}
+            ,items:['1 ano', '2 ano', '3 ano', '1 TI', '2 TI', '3 TI'], src: require('../assets/images.png')
             
         }
         },
@@ -184,6 +197,13 @@
                 this.usuarioUp.serie = user2.serie;
                 this.usuarioUp.turma = user2.turma;
                 this.usuarioUp.imageData = user2.imageData;
+                let resp = await LivrosService.buscaReserva(this.usuarioUp._id)
+                this.usuarioUp.reserva = resp
+                console.log(resp)
+                console.log(this.usuarioUp.reserva)
+                if (user2.imageData == null){
+                    this.usuarioUp.imageData = this.src;
+                }
             },
             //Imagem
             editarImagem(){

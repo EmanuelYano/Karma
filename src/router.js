@@ -9,7 +9,8 @@ import Agua from './views/agua-html.vue'
 import perfil from './views/perfil-usuario.vue'
 import usuarios from './views/controleUser.vue'
 import RecSenha from './views/recSenha.vue'
-
+import validar from './views/validacaoLivro.vue'
+import livrosEmpRes from './views/li-livros-emp-res.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -60,6 +61,16 @@ export default new Router({
       path: '/controle-usuarios',
       name: 'Controle dos usuários',
       component: usuarios
-    }
+    },
+    {
+      path: '/validacao-livro',
+      name: 'Validar livro do usuário',
+      component: validar
+    },
+    {
+      path: '/livro-emp-res',
+      name: 'Livros emprestados e reservados',
+      component: livrosEmpRes
+    },
   ]
 })

@@ -167,11 +167,20 @@
                     this.dialog = true;
                 },
                 async reservar(id){
-                    alert("Infelizmente essa função se encontra indisponivel!")
-                    /*let reserva = {}
-                    reserva.livro = id
-                    reserva.usuario = JSON.parse(localStorage.getItem("usuarioLogado"))._id
-                    await LivrosService.reservar(reserva)*/
+                    //alert("Infelizmente essa função se encontra indisponivel!")
+                    try{
+                        let reserva = {}
+                        reserva.livro = id
+                        reserva.usuario = JSON.parse(localStorage.getItem("usuarioLogado"))._id
+                        let resp = await LivrosService.reservar(reserva)
+                        console.log(resp)
+                    }catch(error){
+                        console.log(error)
+                    }finally{
+                        this.$router.push('/perfil');
+                        this.inicializar();
+                    }
+
                 }
             }  
         } 
