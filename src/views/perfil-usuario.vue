@@ -198,9 +198,14 @@
                 this.usuarioUp.turma = user2.turma;
                 this.usuarioUp.imageData = user2.imageData;
                 let resp = await LivrosService.buscaReserva(this.usuarioUp._id)
-                this.usuarioUp.reserva = resp
-                console.log(resp)
-                console.log(this.usuarioUp.reserva)
+                this.usuarioUp.reserva = resp.reserva
+                if(this.usuarioUp.reserva == "0"){
+                    this.usuarioUp.reserva = this.usuarioUp.reserva + " reservas"
+                }else if(this.usuarioUp.reserva == "1"){
+                    this.usuarioUp.reserva = this.usuarioUp.reserva + " reserva"
+                }else if(this.usuarioUp.reserva > "1"){
+                    this.usuarioUp.reserva = this.usuarioUp.reserva + " reservas"
+                }
                 if (user2.imageData == null){
                     this.usuarioUp.imageData = this.src;
                 }

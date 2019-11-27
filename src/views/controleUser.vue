@@ -80,6 +80,7 @@
                                 <td class="text-xs-right">{{ props.item.telefone }}</td>
                                 <td class="text-xs-right">{{ props.item.serie }}</td>
                                 <td class="text-xs-right">{{ props.item.turma }}</td>
+                                <td class="text-xs-right"></td>
                                 <td class="justify-center layout px-0">
                                 <!--v-icon small  class="mr-2" @click="editItem(props.item)"> </v-icon-->
                                 <font-awesome-icon small class="mr-3 mt-2" size="2x" style="cursor:pointer" alt="Editar" title="Editar" @click="editItem(props.item._id)" icon="edit"/>
@@ -204,6 +205,7 @@
 </style>
 <script>
 import LoginService from '../service/LoginService.js'
+import LivrosService from '../service/LivrosService.js'
     export default {
         data: () => ({
         dialog: false, email:'', senha:'',message:"", cor:"", alerta: false,edit:false,alert:false,deleteVorf:false,alerta:false,
@@ -221,6 +223,7 @@ import LoginService from '../service/LoginService.js'
             { text: 'Telefone', value: 'telefone' },
             { text: 'Série', value: 'serie' },
             { text: 'Turma', value: 'turma' },
+            // { text: 'Livro reservado', value: 'livroReservado' },
             { text: 'Ação', value: 'name', sortable: false },
         ],
         listarUsuarios: [],
@@ -248,6 +251,12 @@ import LoginService from '../service/LoginService.js'
         methods: {
             async initialize () {
                 this.listarUsuarios = await LoginService.listar()
+                // this.adm = this.listarUsuarios;
+                // for(let i=0; i<this.adm.length;i++){
+                //     let resp = await LivrosService.buscaReserva(this.adm._id)
+                //     console.log(resp)
+                // }
+                
             },
             cancelar () {
                 this.dialog = false

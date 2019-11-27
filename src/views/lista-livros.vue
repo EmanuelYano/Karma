@@ -39,7 +39,7 @@
                                                                            
                                 </v-card-title>
                                 <div class="text-xs-center">
-                                        <v-btn  color="success" v-if="liberaBtn" round @click="reservar(item._id)" :disabled="(item.n_disp-item.reservas)<1">Reservar</v-btn>
+                                        <v-btn  color="success" v-if="liberaBtn" round @click="reservar(item._id)" :disabled="(item.n_disp-item.reservas)<1 || a == true">Reservar</v-btn>
                                         <v-btn  color="info" round @click="verMais(item._id)">Ver mais</v-btn>
                                 </div>        
                             </v-card>
@@ -94,7 +94,7 @@
                                         <v-card-actions>
                                             <v-spacer></v-spacer>
                                             <v-btn color="error dark-1" flat round @click="close"><!-- <font-awesome-icon icon="times"/> -->Sair </v-btn>
-                                            <v-btn  color="success" v-if="liberaBtn" flat round @click="reservar(item._id)" :disabled="(item.n_disp-item.reservas)<1">Reservar</v-btn>
+                                            <v-btn  color="success" v-if="liberaBtn" flat round @click="reservar(item._id)" :disabled="(item.n_disp-item.reservas)<1 || a == true">Reservar</v-btn>
                                         </v-card-actions>
                                     </v-card>
                                 </v-dialog>                                                           
@@ -130,7 +130,7 @@
         components: {Navbar},
         data(){
             return{
-                dialog: false,imageData:"",liberaBtn:true, carregaLivros:false,
+                dialog: false,imageData:"",liberaBtn:true, carregaLivros:false,a:false,b:false,
                 info:[],
                 listarLivros: {},
                 verMaisInfoLivro: {},
@@ -138,7 +138,8 @@
                 }
             },
             mounted(){
-                let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))                
+                let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
+                var x = usuario._id
                 if(usuario == null || !usuario._id){
                     this.liberaBtn = false
                     //this.$router.push('login')
@@ -155,11 +156,16 @@
                     this.dialog = false
                 },
                 async inicializar(){
+                    let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
+                    let x = usuario._id
+                    let resp = await LivrosService.buscaReserva(x)
+                    if(resp.reserva >= "1"){
+                        this.a = true
+                    }
                     this.carregaLivros = true
                     this.listarLivros = await LivrosService.listar()                    
                     this.carregaLivros = false
-                    this.info = this.listarLivros
-                   
+                    this.info = this.listarLivros                     
                 },
                 async verMais(id){
                     let x = await LivrosService.buscarId(id);
