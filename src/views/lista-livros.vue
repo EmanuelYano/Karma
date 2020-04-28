@@ -1,4 +1,4 @@
-<template>
+﻿<template>
     <div class="back-full">
         <div grid-list-sm>
             
@@ -157,11 +157,16 @@
                 },
                 async inicializar(){
                     let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
-                    let x = usuario._id
-                    let resp = await LivrosService.buscaReserva(x)
-                    if(resp.reserva >= "1"){
-                        this.a = true
+                    let x = "" 
+		    let resp
+		    if(usuario != null){
+ 		      x = usuario._id
+		      resp = await LivrosService.buscaReserva(x)
+                      if(resp.reserva >= "1"){
+                          this.a = true
+                      }  
                     }
+                    
                     this.carregaLivros = true
                     this.listarLivros = await LivrosService.listar()                    
                     this.carregaLivros = false
