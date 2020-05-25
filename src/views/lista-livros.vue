@@ -139,8 +139,9 @@
             },
             mounted(){
                 let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
-                var x = usuario._id
-                if(usuario == null || !usuario._id){
+                //var x = usuario._id
+                console.log(usuario)
+                if(usuario == null){
                     this.liberaBtn = false
                     //this.$router.push('login')
                 }
@@ -161,8 +162,9 @@
 		    let resp
 		    if(usuario != null){
  		      x = usuario._id
-		      resp = await LivrosService.buscaReserva(x)
-                      if(resp.reserva >= "1"){
+              resp = await LivrosService.buscaReserva(x)
+                console.log(resp)
+                      if(resp.reserva < 1){
                           this.a = true
                       }  
                     }
