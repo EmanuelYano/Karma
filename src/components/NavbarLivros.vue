@@ -1,6 +1,6 @@
 <template>
     <v-card class="a" elevation-10>
-      <v-navigation-drawer class="thor tor" permanent>
+      <v-navigation-drawer color="bar" class="tor" permanent>
         <v-list>
           <v-list-tile
             v-for="item in items"

@@ -139,8 +139,8 @@
             },
             mounted(){
                 let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
-                var x = usuario._id
-                if(usuario == null || !usuario._id){
+                //var x = usuario._id
+                if(usuario == null){
                     this.liberaBtn = false
                     //this.$router.push('login')
                 }
@@ -155,13 +155,34 @@
                 close () {
                     this.dialog = false
                 },
+                // async inicializar(){
+                //     let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
+                //     console.log(usuario)
+                //     let x = usuario._id
+                //     let resp = await LivrosService.buscaReserva(x)
+                //     if(resp.reserva >= "1"){
+                //         this.a = true
+                //     }
+                //     this.carregaLivros = true
+                //     console.log("entrei")
+                //     this.listarLivros = await LivrosService.listar() 
+                //     console.log("gaymer")                   
+                //     this.carregaLivros = false
+                //     this.info = this.listarLivros                     
+                // },
                 async inicializar(){
                     let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
-                    let x = usuario._id
-                    let resp = await LivrosService.buscaReserva(x)
-                    if(resp.reserva >= "1"){
-                        this.a = true
+                    let x = "" 
+		            let resp
+		            if(usuario != null){
+ 		                x = usuario._id
+                        resp = await LivrosService.buscaReserva(x)
+                        console.log(resp)
+                        if(resp.reserva < 1){
+                            this.a = true
+                        }  
                     }
+                    
                     this.carregaLivros = true
                     this.listarLivros = await LivrosService.listar()                    
                     this.carregaLivros = false

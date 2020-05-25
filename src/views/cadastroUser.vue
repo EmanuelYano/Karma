@@ -7,7 +7,7 @@
                  <v-alert v-model="alert" :color="cor" dismissible>
                         {{message}}
                     </v-alert>
-                  <v-card color="rgba(222,184,135,.9)" class="vision" >
+                  <v-card color="#fff4b598" class="vision" >
                   <v-layout justify-center>
                    
                     <v-card-title primary-title>
@@ -44,13 +44,13 @@
                     </v-layout>
                     <v-layout justify-center>
                         <v-flex xs12 md4 lg4>       
-                          <v-btn block class="conf" color="rgba(211,160,95,.9)" @click="salvar">Confirmar</v-btn> 
+                          <v-btn block class="conf" color="#f7e6ad" @click="salvar">Confirmar</v-btn> 
                         </v-flex>
                         <v-flex xs12 md4 lg4>
-                          <v-btn block class="limpa" color="rgba(211,160,95,.9)" @click="limpaCampos">Limpar campos</v-btn>
+                          <v-btn block class="limpa" color="#f7e6ad" @click="limpaCampos">Limpar campos</v-btn>
                         </v-flex>
                         <v-flex xs12 md4 lg4>
-                          <v-btn block class="canc" color="rgba(211,160,95,.9)" @click="cancel">Cancelar</v-btn>
+                          <v-btn block class="canc" color="#f7e6ad" @click="cancel">Cancelar</v-btn>
                         </v-flex>                        
                       </v-layout>
                     </v-container>
@@ -87,7 +87,7 @@
       height: 800px;
       /*background-image: url('../assets/img2/img1_1.png');
       background-size: 100% 100%;*/
-      background-color: #d28f3b;
+      background-color: #f5efda;
     }
     .v-input__slot{
       height: 58px;
