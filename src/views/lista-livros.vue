@@ -140,7 +140,6 @@
             mounted(){
                 let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
                 //var x = usuario._id
-                console.log(usuario)
                 if(usuario == null){
                     this.liberaBtn = false
                     //this.$router.push('login')
@@ -156,6 +155,21 @@
                 close () {
                     this.dialog = false
                 },
+                // async inicializar(){
+                //     let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
+                //     console.log(usuario)
+                //     let x = usuario._id
+                //     let resp = await LivrosService.buscaReserva(x)
+                //     if(resp.reserva >= "1"){
+                //         this.a = true
+                //     }
+                //     this.carregaLivros = true
+                //     console.log("entrei")
+                //     this.listarLivros = await LivrosService.listar() 
+                //     console.log("gaymer")                   
+                //     this.carregaLivros = false
+                //     this.info = this.listarLivros                     
+                // },
                 async inicializar(){
                     let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
                     let x = "" 

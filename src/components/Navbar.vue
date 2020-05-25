@@ -1,7 +1,7 @@
 <template> 
     <nav>
       <v-flex xs5>  
-          <v-toolbar  color="thor" app>
+          <v-toolbar  color="bar" app>
                 <v-toolbar-side-icon @click.stop="drawer = !drawer" class=""></v-toolbar-side-icon>
             
                 <v-toolbar-title class="text-uppercase">
@@ -37,7 +37,7 @@
               </v-toolbar>
           </v-flex>
 
-            <v-navigation-drawer  app v-model="drawer" class="thor"   temporary>
+            <v-navigation-drawer  app v-model="drawer" class="bar"   temporary>
                 <v-list class="pt-2 mj" dense>
                     <v-toolbar-title class="text-uppercase" >
                       <v-toolbar-side-icon @click.stop="drawer = !drawer" class=" "></v-toolbar-side-icon>                              
@@ -75,10 +75,10 @@
         
     }
     .theme--light.v-list.mj {
-      color: #DAA520	;
+      color: rgb(0, 0, 0)	;
     }
     .theme--light.v-toolbar{
-      color: #DAA520	; 
+      color: rgb(0, 0, 0)	; 
     }
     .loki{
       width: 20%;

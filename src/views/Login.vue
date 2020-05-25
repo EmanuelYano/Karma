@@ -18,7 +18,7 @@
                         <v-card-text class="font-weight-regular" > 
                             <v-text-field color="black" outline label="Digite seu email" v-model="usuario.email" autofocus></v-text-field>
                             <v-text-field color="black" outline label="Digite sua senha" type="password" v-model="usuario.senha"></v-text-field>
-                            <v-btn color="rgba(211,160,95,.9)" align-center justify-center @click="entrar" block> Entrar</v-btn>                   
+                            <v-btn color="#f7e6ad" align-center justify-center @click="entrar" block> Entrar</v-btn>                   
                         </v-card-text>
                         <v-layout justify-center>
                             <v-card-actions>
@@ -191,12 +191,11 @@ export default {
         background-image: url("../assets/img2/img22.jpg"); 
         background-size: 100% 100%;
         background-repeat: no-repeat; */
-        background-color: #d28f3b;
+        background-color: #f5efda;
         height: 800px;  
     }
     .vision{
-        background-color: rgba(222,184,135,.9);
-       
+        background-color: #fff4b598;
     }
     .odin{
         margin-bottom:6%;

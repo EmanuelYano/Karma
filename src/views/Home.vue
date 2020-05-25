@@ -39,7 +39,7 @@
     width:auto !important;
   }
   .hom3{
-    background-color: #f4a460;
+    background-color: #f5efda;
     width: 100%;
     height: 100%;
   }
