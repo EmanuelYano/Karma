@@ -159,14 +159,14 @@
                 async inicializar(){
                     let usuario = JSON.parse(localStorage.getItem("usuarioLogado"))
                     let x = "" 
-		    let resp
-		    if(usuario != null){
- 		      x = usuario._id
-              resp = await LivrosService.buscaReserva(x)
-                console.log(resp)
-                      if(resp.reserva < 1){
-                          this.a = true
-                      }  
+		            let resp
+		            if(usuario != null){
+ 		                x = usuario._id
+                        resp = await LivrosService.buscaReserva(x)
+                        console.log(resp)
+                        if(resp.reserva < 1){
+                            this.a = true
+                        }  
                     }
                     
                     this.carregaLivros = true
